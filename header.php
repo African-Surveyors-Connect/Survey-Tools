@@ -32,7 +32,7 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+        <i class="fas fa-toolbox    "></i>
         </div>
         <div class="sidebar-brand-text mx-3">SurveyTools<sup></sup></div>
       </a>
@@ -79,10 +79,10 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Survey Calculator:</h6>
-            <a class="collapse-item" href="utilities-color.html">Distance</a>
-            <a class="collapse-item" href="utilities-border.html">Angles</a>
-            <a class="collapse-item" href="utilities-animation.html">Conversions</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <a class="collapse-item" href="distance.php">Distance</a>
+            <a class="collapse-item" href="angles.php">Angles</a>
+            <a class="collapse-item" href="conversions.php">Conversions</a>
+            <a class="collapse-item" href="other.php">Other</a>
           </div>
         </div>
       </li>
@@ -124,9 +124,9 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+        <a class="nav-link" target="_blank" href="https://www.africansurveyors.co.zw/communityask/">
+        <i class="fas fa-people-carry"></i>
+          <span>Community</span></a>
       </li>
 
       <!-- Divider -->
@@ -250,31 +250,18 @@
                 <h6 class="dropdown-header">
                   Message Center
 				</h6>
-				<?php 
-               echo "<a class='dropdown-item d-flex align-items-center' href='#'>
-                  <div class='dropdown-list-image mr-3'>
-                    <img class='rounded-circle' src='https://source.unsplash.com/fn_BT9fwg_E/60x60' alt=''>
-                    <div class='status-indicator bg-success'></div>
+			<a class="dropdown-item d-flex align-items-center" href="">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
                   </div>
-                  <div class='font-weight-bold'>
-				  <div class='text-truncate'>";
-				   $sql = "SELECT * FROM messages ORDER BY id LIMIT 3";
-				  $result = $conn->query($sql);
-				  if($result->num_rows > 0) {
-					  //output data for each row
-					  while($row = $result->fetch_assoc()) {
-						  echo "".$row["message"]."". "<br></div>
-						  <div class='small text-gray-500'>";
-						  echo "".$row["lastname"].""."<br> </div>
+                  <div class="font-weight-bold">
+				  <div class="text-truncate">This is the latest message in your chatbox
 						  </div>
-						</a>"; 
-						  
-					  }
-				  } else {
-					  echo "No messages";
-				  }
-				   ?> 				
-                <a class="dropdown-item d-flex align-items-center" href="#">
+						  <div class="small text-gray-500">Sender Name . Time</div>
+						  </div>
+						</a>
+            <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
                     <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
                     <div class="status-indicator"></div>
