@@ -1,0 +1,89 @@
+/* CSS files for the input fields based on user input and output
+*My first CSS file
+*Credit: Surveyor Jr
+*/
+
+#map-canvas
+{height: 300px;
+ width: 100%;
+ background: #F5F5F5 url(loading.gif) no-repeat center center;
+ border:1px solid #cecece;
+}
+
+.frmDronpDown {
+  border: 1px solid #7ddaff;
+             
+              background-image: url(images/tomvining_aso.jpg);
+              opacity: 0.95;
+              margin: 2px 0px;
+              padding:40px;
+              border-radius:4px;
+              }
+.alamat 
+{
+    padding: 10px;
+    border: #bdbdbd 1px solid;
+    border-radius: 4px;
+    background-color: #FFF;
+    width: 78%;
+}
+.smallbox 
+{
+    padding: 10px;
+    border: #bdbdbd 1px solid;
+    border-radius: 4px;
+    background-color: #FFF;
+    width: 20%;
+}
+.smallbox1 
+{
+    padding: 10px;
+    border: #bdbdbd 1px solid;
+    border-radius: 4px;
+    background-color: #FFF;
+    width: 35%;
+}
+.InputBox
+{
+    padding: 10px;
+    border: #bdbdbd 1px solid;
+    border-radius: 4px;
+    background-color: #FFF;
+    width: ;
+}
+.btn 
+{
+    padding: 15px;
+    border: #bdbdbd 2px solid;
+    border-radius: 4px;
+    background-color: rgb(15, 92, 15);     
+}
+.error
+{
+  background-color: red;
+  color: white;
+  font:muli;
+}
+
+.row
+{
+    padding-bottom:15px;
+}
+
+#column .grid_full
+{
+border: solid 1px #999;
+color:#999;
+margin-top:20px;
+padding:20px;
+}
+
+.AnswerBox
+{
+    padding: 0px;
+    border: green solid;
+    border-radius: 50px;
+    color: black;
+    background-color: green;
+    width: ;
+}
