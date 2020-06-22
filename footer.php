@@ -1,6 +1,26 @@
  <!-- Footer -->
  <footer class="sticky-footer bg-white">
         <div class="container my-auto">
+        <div class="mt-4 text-center">
+                    <span class="mr-2">
+                      <i class="fab fa-facebook"></i>
+                    </span>
+                    <span class="mr-2">
+                      <i class="fab fa-twitter"></i>
+                    </span>
+                    <span class="mr-2">
+                      <i class="fab fa-linkedin"></i>
+                    </span>
+                    <span class="mr-2">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span class="mr-2">
+                      <i class="fab fa-whatsapp"></i>
+                    </span>
+                    <span class="mr-2">
+                      <i class="fab fa-email"></i>
+                    </span>
+                  </div>
           <div class="copyright text-center my-auto">
             <span> &copy; African Surveyors Connect 2020</span>
           </div>
