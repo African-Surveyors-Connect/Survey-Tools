@@ -1,5 +1,5 @@
 # Surveying-Tools
-<center><img src="https://www.africansurveyors.co.zw/wp-content/uploads/2020/06/African-surveyors.png" width="75" height="75" alt="logo"></center>
+<img src="https://www.africansurveyors.co.zw/wp-content/uploads/2020/06/African-surveyors.png" width="75" height="75" style="text-align:center;" alt="logo"></center>
 Online Surveying Tools which can be used by any one in the profession. 
 Our aim is to:
 <li>Reduce amount of labor required for basic stuff</li>
