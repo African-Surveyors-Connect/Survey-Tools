@@ -58,6 +58,9 @@
     border-radius: 4px;
     background-color: rgb(15, 92, 15);     
 }
+.button {
+    background-color: rgb(15, 96, 121);
+}
 .error
 {
   background-color: red;
@@ -86,4 +89,12 @@ padding:20px;
     color: black;
     background-color: green;
     width: relative;
+}
+.formbox {
+    width: 50%;
+
+}
+.center {
+    align-content: center;
+    text-align: center;
 }
