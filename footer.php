@@ -55,6 +55,9 @@
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
 
+  <!-- JS extensions for the calculator -->
+  <script type="text/javascript" src="js/CalcSS3.js"></script>
+
 </body>
 
 </html>

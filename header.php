@@ -19,6 +19,13 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+  <!-- CSS files for the calculator -->
+  <link href="css/CalcSS3.css" rel="stylesheet" type="text/css" />
+  <link href="css/index.css" rel="stylesheet" type="text/css" />
+  
+  <!-- input fields and design CSS -->
+  <link rel="stylesheet" href="css/field.css">
+
 </head>
 
 <body id="page-top">
@@ -79,6 +86,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Survey Calculator:</h6>
+            <a class="collapse-item" href="basic-calculator.php">Basic</a>
             <a class="collapse-item" href="distance.php">Distance</a>
             <a class="collapse-item" href="angles.php">Angles</a>
             <a class="collapse-item" href="conversions.php">Conversions</a>
@@ -150,7 +158,7 @@
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <button id="sidebarToggleTop" class=" btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
 
@@ -159,7 +167,7 @@
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
