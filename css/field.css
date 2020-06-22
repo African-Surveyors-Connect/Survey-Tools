@@ -49,7 +49,7 @@
     border: #bdbdbd 1px solid;
     border-radius: 4px;
     background-color: #FFF;
-    width: ;
+    width: relative;
 }
 .btn 
 {
@@ -85,5 +85,5 @@ padding:20px;
     border-radius: 50px;
     color: black;
     background-color: green;
-    width: ;
+    width: relative;
 }
