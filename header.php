@@ -26,6 +26,20 @@
   <!-- input fields and design CSS -->
   <link rel="stylesheet" href="css/field.css">
 
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5ee5f4869e5f694422908628/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
 </head>
 
 <body id="page-top">
@@ -126,8 +140,8 @@
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
+          <i class="fas fa-fw fa-book"></i>
+          <span>Dictionary</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
@@ -135,6 +149,12 @@
         <a class="nav-link" target="_blank" href="https://www.africansurveyors.co.zw/communityask/">
         <i class="fas fa-people-carry"></i>
           <span>Community</span></a>
+      </li>
+      <!-- developer suggest section -->
+      <li class="nav-item">
+        <a class="nav-link" href="dev-feedback.php">
+          <i class="fa fa-comment" aria-hidden="true"></i>
+          <span>Developer Feedback</span></a>
       </li>
 
       <!-- Divider -->
