@@ -1,9 +1,9 @@
-<?php require('header.php');?>
+<?php require('includes/header.php');?>
 
 
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="container-fluid" style="text-align:center;">
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -23,7 +23,7 @@
             <div class="col-lg-6">
 
               <!-- Default Card Example -->
-			  <div class="card shadow mb-4"><a href="standardisation.php">
+			  <div class="card shadow mb-4"><a href="join.php">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Join</h6>
                 </div>
@@ -33,7 +33,7 @@
               </div>
 
               <!-- Basic Card Example -->
-              <div class="card shadow mb-4"><a href="temperature.php">
+              <div class="card shadow mb-4"><a href="polar.php">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Polar</h6>
                 </div>
@@ -47,7 +47,7 @@
             <div class="col-lg-6">
 
                <!-- Default Card Example -->
-			  <div class="card shadow mb-4"><a href="sag.php">
+			  <div class="card shadow mb-4"><a href="intersection.php">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Intersection</h6>
                 </div>
@@ -57,7 +57,7 @@
               </div>
 
               <!-- Basic Card Example -->
-              <div class="card shadow mb-4"><a href="tension-pull.php">
+              <div class="card shadow mb-4"><a href="resection.php">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Resection</h6>
                 </div>
@@ -76,7 +76,7 @@
             <div class="col-lg-6">
 
               <!-- Default Card Example -->
-			  <div class="card shadow mb-4"><a href="mean-sea-level.php">
+			  <div class="card shadow mb-4"><a href="traverse.php">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Traversing</h6>
                 </div>
@@ -122,4 +122,4 @@
 
      
 
-<?php require('footer.php');?>
+<?php require('includes/footer.php');?>
