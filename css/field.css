@@ -56,7 +56,9 @@
     padding: 15px;
     border: #bdbdbd 2px solid;
     border-radius: 4px;
-    background-color: rgb(15, 92, 15);     
+    background-color: rgb(15, 92, 15); 
+    text-emphasis-color: white;
+    color: #FFF;    
 }
 .button {
     background-color: rgb(15, 96, 121);
