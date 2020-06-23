@@ -1,6 +1,6 @@
-<?php require('header.php');?>
+<?php require('includes/header.php');?>
 
-<div class="container-fluid">
+<div class="container-fluid" style="text-align:center;">
 	
           <!-- Page Heading -->
 		  <h1 class="h3 mb-4 text-gray-800">Basic Calculator</h1>
@@ -78,4 +78,4 @@
         </div>
         <!-- /.container-fluid -->
 
-<?php require('footer.php');?>
+<?php require('includes/footer.php');?>

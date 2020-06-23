@@ -1,3 +1,3 @@
-<?php require('header.php');?>
+<?php require('includes/header.php');?>
 
-<?php require('footer.php');?>
+<?php require('includes/footer.php');?>

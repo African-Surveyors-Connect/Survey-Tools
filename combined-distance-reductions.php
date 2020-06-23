@@ -1,4 +1,4 @@
-<?php require('header.php'); ?>
+<?php require('includes/header.php'); ?>
 
 <div class="container-fluid" style="text-align:center;">
 	
@@ -219,4 +219,4 @@ Fill in the boxes accordingly. Wrong input values result in distorted output rec
  </div>
    
 
-<?php require('footer.php'); ?>
+<?php require('includes/footer.php'); ?>

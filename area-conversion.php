@@ -8,6 +8,10 @@
 Fill in the boxes accordingly. Wrong input values result in distorted output records.
 </div>
  
+ <div class="alert alert-warning" role="alert" style="text-align:center;">
+	 <h4 class="alert-heading">Under Construction</h4>	 
+	 If you'd like to contribute kindly visit the <a href="https://github.com/African-Surveyors-Connect/Survey-Tools/">GitHub Repository</a> <i class="fas fa-grin-tongue-wink"></i>
+ </div>
 
  </div>
    

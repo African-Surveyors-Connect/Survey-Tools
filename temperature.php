@@ -1,6 +1,6 @@
-<?php require('header.php'); ?>
+<?php require('includes/header.php'); ?>
 
-<div class="container-fluid">
+<div class="container-fluid" style="text-align:center;">
 	
    <!-- Page Heading -->
  <h1 class="h3 mb-4 text-gray-800">Temperature</h1>
@@ -11,5 +11,5 @@ Fill in the boxes accordingly. Wrong input values result in distorted output rec
 
  </div>
    
-
-<?php require('footer.php'); ?>
+ 
+<?php require('includes/footer.php'); ?>
