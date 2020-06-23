@@ -97,7 +97,11 @@
             <!-- Area Chart -->
             <div class="col-xl-8 col-lg-7">
               <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
+              <div class="alert alert-warning" role="alert" style="text-align:center;">
+	 <h4 class="alert-heading">Under Construction</h4>
+	 If you'd like to contribute kindly visit the <a href="https://github.com/African-Surveyors-Connect/Survey-Tools/">GitHub Repository</a> <i class="fas fa-grin-tongue-wink"></i>
+ </div>
+                <!-- Card Header - Dropdown --><!--
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
                   <div class="dropdown no-arrow">
@@ -113,11 +117,23 @@
                     </div>
                   </div>
                 </div>
-                <!-- Card Body -->
+                <!- Card Body --><!--
                 <div class="card-body">
                   <div class="chart-area">
                     <canvas id="myAreaChart"></canvas>
                   </div>
+                </div>-->
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                  In the meantime you can 
+                  <ul style="text-align:left;">
+                    <li>Make Calculations Online</li>
+                    <li>Help Suggest new ideas</li>
+                    <li>Donate <i class="fas fa-smile"></i></li>
+                    <li>& engage with the community</li>
+                  </ul>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -143,7 +159,8 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  Surveying term of the day comes here...
+                  Reconnaisance Survey -<br>
+                  is an extensive study of an entire area that might be used for a road or airfield. Its purpose is to eliminate those routes or sites which are impractical or unfeasible and to identify the more promising routes or sites. Existing maps and aerial photographs may be of great help.
                   <div class="mt-4 text-center" style="color:blue;">
                     Share on<br>
                     <span class="mr-2">
@@ -170,7 +187,7 @@
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
 
-              <!-- Project Card Example -->
+              <!-- Project Card Example --><!--
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
@@ -199,7 +216,7 @@
                 </div>
               </div>
 
-              <!-- Color System -->
+              <!- Color System --><!--
               <div class="row">
                 <div class="col-lg-6 mb-4">
                   <div class="card bg-primary text-white shadow">
@@ -255,7 +272,7 @@
 
             <div class="col-lg-6 mb-4">
 
-              <!-- Illustrations -->
+              <!- Illustrations --><!--
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
@@ -269,7 +286,7 @@
                 </div>
               </div>
 
-              <!-- Approach -->
+              <!- Approach --><!--
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
@@ -281,7 +298,7 @@
               </div>
 
             </div>
-          </div>
+          </div>-->
 
         </div>
         <!-- /.container-fluid -->
