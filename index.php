@@ -99,7 +99,7 @@
               <div class="card shadow mb-4">
               <div class="alert alert-warning" role="alert" style="text-align:center;">
 	 <h4 class="alert-heading">Under Construction</h4>
-	 If you'd like to contribute kindly visit the <a href="https://github.com/African-Surveyors-Connect/Survey-Tools/">GitHub Repository</a> <i class="fas fa-grin-tongue-wink"></i>
+	 If you'd like to contribute kindly visit the <a href="https://github.com/African-Surveyors-Connect/Survey-Tools/">GitHub Repository</a> <i class="fab fa-github"></i>
  </div>
                 <!-- Card Header - Dropdown --><!--
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -135,6 +135,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
+                <a href='https://www.paynow.co.zw/Payment/Link/?q=c2VhcmNoPWFkbWluJTQwYWZyaWNhbnN1cnZleW9ycy5jby56dyZhbW91bnQ9MC4wMCZyZWZlcmVuY2U9U3VydmV5LUNhbGN1bGF0aW9ucy1Eb25hdGlvbiZsPTA%3d' target='_blank'><img src='https://www.paynow.co.zw/Content/Buttons/Medium_buttons/button_donate_medium.png' style='border:0' /></a>
               </div>
             </div>
 

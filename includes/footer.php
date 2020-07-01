@@ -18,6 +18,9 @@
                       <i class="fab fa-whatsapp"></i>
                     </span>
                     <span class="mr-2">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span class="mr-2">
                       <i class="fab fa-email"></i>
                     </span>
                   </div>

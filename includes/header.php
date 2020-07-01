@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="description" content="Online tools for the Geomatics profession. We aim to simplify all processes and needs within the profession through mobile and web applications to assist in this digital era">
   <meta name="author" content="">
 
   <title>Survey-Tools</title>
@@ -130,8 +130,8 @@ s0.parentNode.insertBefore(s1,s0);
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Online</h6>
-            <a class="collapse-item" href="#">Get Area Coordinates</a><!--
+            <h6 class="collapse-header">Location Based</h6>
+            <a class="collapse-item" href="get-area-coordinates.php">Get Area Coordinates</a><!--
             <a class="collapse-item" href="login.html">Login</a>
             <a class="collapse-item" href="register.html">Register</a>
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a>-->

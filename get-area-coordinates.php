@@ -6,8 +6,7 @@
  <h1 class="h3 mb-4 text-gray-800">Get Coordinates From the Polygon Corners</h1>
  
 <div class="alert alert-warning" role="alert" style="text-align:center;">
-	 <h4 class="alert-heading">Under Construction</h4> <i class="fas fa-toolbox"></i>
-	 If you'd like to contribute kindly visit the <a href="https://github.com/African-Surveyors-Connect/Survey-Tools/">GitHub Repository</a> <i class="fas fa-grin-tongue-wink    "></i>
+	 If you'd like to contribute kindly visit the <a href="https://github.com/African-Surveyors-Connect/Survey-Tools/">GitHub Repository</a> <i class="fab fa-github"></i>
  </div>
 
  <body onload="initialize()">
@@ -17,7 +16,7 @@
   <button id="clipboard-btn" onclick="copyToClipboard(document.getElementById('info').innerHTML)">Copy to Clipboard</button>
   <textarea id="info"></textarea>
 
-  <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'></script>
+  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkmqBZKIk3rVi_B9QiLushcKUuFOzUVPI&sensor=false'></script>
   <script src="js/index.js"></script>
 
 </body>
