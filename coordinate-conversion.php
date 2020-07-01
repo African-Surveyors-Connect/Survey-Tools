@@ -275,9 +275,6 @@ function MapLatLonToXY (phi, lambda, lambda0, xy)
 
     return;
 }
-
-
-
 /*
 * MapXYToLatLon
 *
@@ -430,9 +427,6 @@ function LatLonToUTMXY (lat, lon, zone, xy)
 
     return zone;
 }
-
-
-
 /*
 * UTMXYToLatLon
 *
@@ -472,10 +466,6 @@ function UTMXYToLatLon (x, y, zone, southhemi, latlon)
         
     return;
 }
-
-
-
-
 /*
 * btnToUTM_OnClick
 *
@@ -531,8 +521,6 @@ function btnToUTM_OnClick ()
 
     return true;
 }
-
-
 /*
 * btnToGeographic_OnClick
 *
@@ -588,14 +576,12 @@ function btnToGeographic_OnClick ()
 
 <form name="frmConverter" onSubmit="0">
 <table style="text-align:center;">
-
 <!-- Header row -->
 <tr>
 <th colspan=2 align=center>Geographic<br>(<EM>degrees decimal</EM>)</th>
 <th align=center>To/From</th>
 <th colspan=2 align=center>UTM</th>
 </tr>
-
 <!-- Easting row (plus command button) -->
 <!-- The size attribute for the button input keeps the control
      from looking too bad on browsers that don't support buttons

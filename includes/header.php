@@ -28,6 +28,9 @@
   <!-- input fields and design CSS -->
   <link rel="stylesheet" href="css/field.css">
 
+  <!-- Css for the area coordinates thing -->
+  <link rel="stylesheet" href="css/style.css">
+
   <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -127,8 +130,8 @@ s0.parentNode.insertBefore(s1,s0);
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Students:</h6>
-            <a class="collapse-item" href="#">Coming Soon...</a><!--
+            <h6 class="collapse-header">Online</h6>
+            <a class="collapse-item" href="#">Get Area Coordinates</a><!--
             <a class="collapse-item" href="login.html">Login</a>
             <a class="collapse-item" href="register.html">Register</a>
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a>-->
