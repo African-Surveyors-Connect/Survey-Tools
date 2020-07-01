@@ -16,7 +16,7 @@
   <button id="clipboard-btn" onclick="copyToClipboard(document.getElementById('info').innerHTML)">Copy to Clipboard</button>
   <textarea id="info"></textarea>
 
-  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCkmqBZKIk3rVi_B9QiLushcKUuFOzUVPI&sensor=false'></script>
+  <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'></script>
   <script src="js/index.js"></script>
 
 </body>
