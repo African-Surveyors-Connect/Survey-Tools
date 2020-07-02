@@ -45,6 +45,9 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 <!--End of Tawk.to Script-->
 
+<!-- Google AdSense Code -->
+<script data-ad-client="ca-pub-1726892928324403" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
 </head>
 
 <body id="page-top">
