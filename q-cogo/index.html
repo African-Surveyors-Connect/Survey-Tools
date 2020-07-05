@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+
+
+
+<!--
+	This heading must remain intact at all times.
+	Copyright (c) 2018 Mark Mason.
+
+	File:	index.html
+	Use:	To provide the html interface for Q-Cogo, <http://www.q-cogo.com/>.
+	Ver:	1.5
+
+	Created by Mark Mason. Latest version available from <http://www.q-cogo.com/>.
+
+
+
+	This file is part of Q-Cogo.
+	
+	Q-Cogo is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	Q-Cogo is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with Q-Cogo.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+
+
+<html lang="en">
+
+<head>
+
+
+
+	<!-- The following code redirects MS IE6 (or lesser) users to a page explaining why Q-Cogo does not support IE6 -->
+
+
+
+<!--[if lte IE 6]>
+
+	<meta http-equiv="refresh" content="0; url=/ie6.html">
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	window.top.location = '/ie6.html';
+	/* ]]> */
+	</script>
+
+<![endif]-->
+
+
+
+<meta charset="utf-8">
+<title>Q-Cogo: Online Land Surveyor's Calculator</title>
+<meta name="Description" content="Free online calculation and COGO tool for land surveyors">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta property="og:title" content="Q-Cogo">
+		<meta property="og:description" content="Free, accessible tool for solving land surveying computations. Perfect for students, established professionals, and engineers.">
+		<meta property="og:image" content="http://q-cogo.com/images/q-cogo-Logo-card.gif">
+		<meta property="og:url" content="http://q-cogo.com/">
+		<meta name="twitter:card" content="summary">
+		<meta property="og:site_name" content="Q-Cogo: Online Land Surveyor's Calculator">
+		<meta name="twitter:image:alt" content="Quick and intuitive calculator for land surveyors and survey students">
+		
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+		<link rel="manifest" href="manifest.json">
+		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="theme-color" content="#666666">
+
+<meta name="verify-v1" content="kA/KzGv9BbVZ6ozV7fhCULit3t38mgv0BWlM2sI8AOQ=">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="stylesheet" href="jquery-impromptu.css">  <!-- order of stylesheets important -->
+<link rel="stylesheet" href="Q-Cogo-Styles.css">
+<link rel="stylesheet" href="fonts/font-awesome-4.4.0/css/font-awesome.min.css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+<body>
+
+	<!-- The following libraries were gotten from jQuery (http://jquery.com/) and are used with thanks -->
+
+		<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="jquery-ui.min.js"></script>
+	 	<script type="text/javascript" src="jquery.hotkeys.js"></script>
+		<script type="text/javascript" src="jquery-impromptu-v6-2-2.js"></script>
+		
+	<!-- The following library was gotten from Hammer (http://hammerjs.github.io/) and is used with thanks -->
+
+		<script src="hammer.min.js"></script>
+
+	<!-- The following libraries form the core functionality of Q-Cogo -->
+
+		<script type="text/javascript" src="Q-Cogo-Adjust.js"></script>
+		<script type="text/javascript" src="Q-Cogo-Cogo.js"></script>
+		<script type="text/javascript" src="Q-Cogo-Misc.js"></script>
+		<script type="text/javascript" src="Q-Cogo-Nav.js"></script>
+		<script type="text/javascript" src="Q-Cogo-Sketch.js"></script>
+		<script type="text/javascript" src="Q-Cogo-Sugg.js"></script>
+
+
+
+<div id="debug" class="debug"></div>
+
+
+
+	<!-- Hidden high precision point information, linework information and sketch state data -->
+	
+<div class="hidden">
+
+<!-- High precision point information (P N E Z D) -->
+<textarea id="pointsContents" cols="80" rows="7" readonly="readonly"></textarea>
+
+<!-- Linework information (ID[From+To+Radial] TYPE[L=LINE, A=ARC] FROM TO RADIAL[OPTIONAL,null='-'] LAYER) -->
+<textarea id="linesContents" cols="80" rows="7" readonly="readonly"></textarea>
+
+<!-- Data for the PARAMETERS (Wc, Hc, Xc, Yc) of the sketch to perform while in a given area -->
+<input type="text" id="PointsCanvasPar" value="" readonly="readonly">
+<input type="text" id="TraverseCanvasPar" value="" readonly="readonly">
+<input type="text" id="InverseCanvasPar" value="" readonly="readonly">
+<input type="text" id="IntersectCanvasPar" value="" readonly="readonly">
+<input type="text" id="TransformCanvasPar" value="" readonly="readonly">
+<input type="text" id="AdjustCanvasPar" value="" readonly="readonly">
+<input type="text" id="AreaCanvasPar" value="" readonly="readonly">
+<input type="text" id="SolverCanvasPar" value="" readonly="readonly">
+
+<!-- Data for the TYPE of sketch to perform while in a given area (ie: SketchPtPt(...)) -->
+<input type="text" id="PointsCanvasSt" value="" readonly="readonly">
+<input type="text" id="TraverseCanvasSt" value="" readonly="readonly">
+<input type="text" id="InverseCanvasSt" value="" readonly="readonly">
+<input type="text" id="IntersectCanvasSt" value="" readonly="readonly">
+<input type="text" id="TransformCanvasSt" value="" readonly="readonly">
+<input type="text" id="AdjustCanvasSt" value="" readonly="readonly">
+<input type="text" id="AreaCanvasSt" value="" readonly="readonly">
+<input type="text" id="SolverCanvasSt" value="" readonly="readonly">
+
+</div>
+
+
+
+	<!-- Left navigation bar and top floating links -->
+
+
+
+<div class="center">
+
+<div class="sidebar">
+
+	<div class="title-block">
+
+<h1><a class="image" href="http://q-cogo.com"><img class="title" src="images/q-cogo-Logo.gif" alt="Q-Cogo" title="Q-Cogo"></a></h1>
+
+	</div>
+	
+	<div class="menu-holder">
+
+<a href="javascript:void(0)" class="legend" id="points-tab" title="Add, edit or delete points ( p )" onclick="MoveFront('points'); PanSketch(0, 0);"><span>Points</span></a>
+<a href="javascript:void(0)" class="legend" id="traverse-tab" title="Find coordinates by traversing ( t )" onclick="MoveFront('traverse'); PanSketch(0, 0);"><span>Traverse</span></a>
+<a href="javascript:void(0)" class="legend" id="inverse-tab" title="Inverse between points or lines ( i )" onclick="MoveFront('inverse'); PanSketch(0, 0);"><span>Inverse</span>
+<a href="javascript:void(0)" class="legend" id="intersect-tab" title="Perform intersections between points ( x )" onclick="MoveFront('intersect'); PanSketch(0, 0);"><span>Intersect</span></a>
+<a href="javascript:void(0)" class="legend" id="transform-tab" title="Shift, scale or rotate points ( f )" onclick="MoveFront('transform'); PanSketch(0, 0);"><span>Transform</span></a>
+<a href="javascript:void(0)" class="legend" id="adjust-tab" title="Analyze and adjust traverse ( j )" onclick="MoveFront('adjust'); PanSketch(0, 0);"><span>Adjust</span></a>
+
+<hr class="spacer">
+
+<a href="javascript:void(0)" class="legend legend-last" id="area-tab" title="Perform area calculations ( a )" onclick="MoveFront('area'); PanSketch(0, 0);"><span>Area</span></a>
+<a href="javascript:void(0)" class="legend" id="solver-tab" title="Solve triangles and curves ( l )" onclick="MoveFront('solver'); PanSketch(0, 0);"><span>Solver</span></a>
+<a href="javascript:void(0)" class="legend" id="settings-tab" title="Change Q-Cogo settings ( s )" onclick="MoveFront('settings')"><span>Settings</span></a>
+<a href="javascript:void(0)" class="legend legend-last" id="help-tab" title="Get help with all aspects of Q-Cogo ( h )" onclick="MoveFront('help')"><span>Help</span></a>
+
+	</div>
+
+</div>
+
+
+
+	<!-- Header Bar -->
+
+
+
+<div class="main">
+	
+<div class="header-bar"><h2 id="header">Points</h2></div>
+
+<div class="about-copy">
+
+	<div class="save-load">
+		<a href="javascript:void(0)" title="Save job to offline file" id="SaveFile" onclick="SaveTo();"><i class="fa fa-floppy-o"></i></a>
+		<input name="LoadFile" id="LoadFile" type="file" class="inputfile"><label id="LoadFileLabel" for="LoadFile" title="Open job from offline file"><i class="fa fa-folder-open-o"></i></label>
+		<input class="filename" id="filename" onblur="CheckFileName();" value="">
+	</div>
+
+	<a href="javascript:void(0)" id="CopyrightLink" title="Copyright and terms of Q-Cogo">&copy; Mark Mason</a> | 
+	<a href="javascript:void(0)" id="AboutLink1" title="About Q-Cogo">About</a>
+	<a href="javascript:void(0)" id="AboutLink2" title="About Q-Cogo"><i class="fa fa-info-circle fa-lg"></i></a> | 
+	<a href="javascript:void(0)" id="DownloadLink1" title="How to download Q-Cogo">Download</a>
+	<a href="javascript:void(0)" id="DownloadLink2" title="How to download Q-Cogo"><i class="fa fa-download fa-lg"></i></a>
+
+</div>
+
+
+
+	<!-- Points information -->
+
+
+
+<div class="holder" id="points" style="z-index: 9;">
+
+<form name="points" autocomplete="off">
+
+<div class="set"><h3>Points Record: <a href="javascript:void(0)" class="ss" title="Sort by point name" onclick="SortPoints(0)" id="SortPt">Pt</a> | <a href="javascript:void(0)" class="ss" title="Sort by northing" onclick="SortPoints(1)" id="SortN">N</a> | <a href="javascript:void(0)" class="ss" title="Sort by easting" onclick="SortPoints(2)" id="SortE">E</a> | <a href="javascript:void(0)" class="ss" title="Sort by elevation" onclick="SortPoints(3)" id="SortZ">Z</a> | <a href="javascript:void(0)" class="ss" title="Sort by description" onclick="SortPoints(4)" id="SortDesc">Desc</a><a href="javascript:void(0)" class="tt" title="Get help with this feature" id="points-headerlink">&#160;</a></h3>
+
+<textarea class="large" name="pointsContentsCopy" id="pointsContentsCopy" readonly="readonly" ondblclick="TextExpand(this)" onblur="TextContract(this); CheckAllPoints(0, 0, 0, 0, qG('points-tiplink'));" wrap="off"> </textarea>
+
+<p class="right"><a href="javascript:void(0)" class="edt" title="Edit points" onclick="EditPoints()">Edit</a>|<a href="javascript:void(0)" class="sam" title="Load sample data" onclick="SampleData()">Sample</a>|<a href="javascript:void(0)" class="sel" title="Select this record" onclick="SelectField(document.points.pointsContentsCopy)">Select</a>|<a href="javascript:void(0)" class="del" title="Clear this record" onclick="ClearField('pointsContents')">Clear</a></p>
+
+</div>
+
+</form>
+
+
+
+	<!-- Points inputs -->
+
+
+
+<div class="subset"><h3>Store / Edit<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="points-tiplink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label"><span class="small-label">Pt:</span> <input class="short" data-content="pointsingle" type="tel" id="Pt" value="" onfocus="AutoPoint(this);" onblur="StrictPoint(this);"></p>
+<p class="label"><span class="small-label">N:</span> <input class="short" data-content="datacoord" type="tel" id="N" value="" onblur="StrictCheck(this, 0, '', 'decimal');"></p>
+<p class="label"><span class="small-label">E:</span> <input class="short" data-content="datacoord" type="tel" id="E" value="" onblur="StrictCheck(this, 0, '', 'decimal');"></p>
+<p class="label"><span class="small-label">Z:</span> <input class="short" data-content="datacoord" type="tel" id="Z" value="" data-original-value="0" onblur="StrictCheck(this, 0, 0, 'decimal');"></p>
+<p class="label"><span class="small-label">Desc:</span> <input class="short" data-content="datatext" type="text" id="Desc" value="" data-original-value="COGO" onfocus="createAutoComplete('Desc', 'PtSuggest1', 4, 0);"></p>
+
+<div id="PtSuggest1" class="sugg-div"></div>
+
+<p class="right"><a href="javascript:void(0)" class="add" title="Store point" onclick="SetPoint()">Store</a></p>
+
+<hr>
+
+<p class="label"><span class="small-label">Pts:</span> <input class="short points" data-content="pointmult" type="tel" id="Delete" value="" onfocus="createAutoComplete('Delete', 'PtSuggest2', 0, 1);"></p>
+
+<div id="PtSuggest2" class="sugg-div"></div>
+
+<p class="right"><a href="javascript:void(0)" class="del" title="Delete points" onclick="DeletePoint('')">Delete</a></p>
+
+</div>
+
+</div></div>
+
+
+
+	<!-- Help -->
+
+
+
+<div class="holder" id="help">
+
+<div class="fullset"><h3>Help Index<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="help-tiplink">&#160;</a></h3>
+
+<div class="help-scroll" id="HelpIndex">
+
+<div id="AboutTip"><div class="tooltip">
+
+<h4>ABOUT</h4>
+
+Welcome to Q-Cogo! Q-Cogo was developed as a free, accessible way of solving land survey computations. <br><br>
+
+Anyone can use Q-Cogo. It is aimed at land surveying and geomatics engineering students, and others wanting to do surveying computations without expensive coordinate geometry software. Q-Cogo is web-based and does not require installation. <br><br>
+
+Q-Cogo is easy to use, and provides the practiced user with a faster way of performing calculations. For now, it is exclusively a calculator, but future versions may be capable of producing survey drawings. <br><br>
+
+For more information, contact us: NOTANADDRESS.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="CopyrightTip"><div class="tooltip">
+
+<h4>COPYRIGHT, TERMS</h4>
+
+Copyright &copy; 2018 Mark R. Mason, BCLS. <br><br>
+
+Q-Cogo is free software: you can redistribute it and/or modify it under the terms of the <a href="http://www.gnu.org/licenses/gpl-3.0.html" title="GNU General Public License" onclick="return Win('http://www.gnu.org/licenses/gpl-3.0.html');">GNU General Public License</a> as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. <br><br>
+
+Q-Cogo is distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantability or fitness for a particular purpose. See the <a href="http://www.gnu.org/licenses/gpl-3.0.html" title="GNU General Public License" onclick="return Win('http://www.gnu.org/licenses/gpl-3.0.html');">GNU General Public License</a> for more details. <br><br>
+
+For more information, contact us: NOTANADDRESS.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="VersionTip"><div class="tooltip">
+
+<h4>VERSIONS</h4>
+
+Each older version of Q-Cogo will remain available here. Future versions of Q-Cogo will be able to open all data produced by earlier versions.
+
+<h5><a href="http://q-cogo.com/archive-v1-5" title="Q-Cogo v. 1.5" onclick="return Win('http://q-cogo.com/archive-v1-5');"><span class="u b">Q-Cogo v. 1.5 &ndash; Apr 10, 2018</span></a></h5>
+
+<span class="i u">Overview:</span>
+<ul>
+	<li>Enabled sketch navigation on touch devices</li>
+	<li>Improved curve calculator to allow solutions based on any two values</li>
+	<li>Allowed entry of quadrantal bearings</li>
+	<li>Moved HI and HT inputs to the main traverse area, removed from settings</li>
+	<li>Added records contents and sketch states to saved file contents (backward compatible)</li>
+	<li>Added ability to draw lines as points are being stored</li>
+	<li>Improved tab order and element focus on return from prompts</li>
+	<li>Added input by sketch point selection</li>
+	<li>Allowed 'Enter' key to advance through input fields</li>
+	<li>Added perimeter value to area calculations</li>
+	<li>Bug fixes</li>
+</ul>
+
+<span class="i u">Known bugs / limitations:</span>
+<ul>
+	<li>Sketch performance is laggy on lower-powered mobile devices</li>
+	<li>Sketches behave erratically in some browsers when using a touch screen with a desktop computer</li>
+</ul>
+
+<h5><a href="http://q-cogo.com/archive-v1-4" title="Q-Cogo v. 1.4" onclick="return Win('http://q-cogo.com/archive-v1-4');"><span class="u b">Q-Cogo v. 1.4 &ndash; Nov 1, 2017</span></a></h5>
+
+<span class="i u">Overview:</span>
+<ul>
+	<li>Added "Adjust" tab featuring compass rule traverse adjustment with sideshots</li>
+	<li>Added point-based line and arc drawing tools</li>
+	<li>Added save/open feature, allowing archiving of named jobs (as .QCG file) to local computer</li>
+	<li>Allowed editing of existing points without requiring previous deletion</li>
+	<li>Added page exit warning to guard against accidental data loss</li>
+	<li>Made Transform more flexible</li>
+	<li>Improved sketch behaviour</li>
+	<li>Bug fixes</li>
+</ul>
+
+<span class="i u">Known bugs / limitations:</span>
+<ul>
+	<li>Compass rule adjustments must be performed by two fixed points, not by 1 fixed point and a fixed azimuth</li>
+</ul>
+
+<h5><a href="http://q-cogo.com/archive-v1-3" title="Q-Cogo v. 1.3" onclick="return Win('http://q-cogo.com/archive-v1-3');"><span class="u b">Q-Cogo v. 1.3 &ndash; Sept 1, 2017</span></a></h5>
+
+<span class="i u">Overview:</span>
+<ul>
+	<li>Update to HTML5 and modern standards</li>
+	<li>Improved performance on mobile devices</li>
+	<li>Added support for import of CSV as well as space separated points files</li>
+	<li>Added support of DDD°MM'SS.SS..." style angle/azimuth input</li>
+	<li>Sketches and reporting more user-friendly and complete</li>
+	<li>Updated to SVG graphics for compatibility with future enhancements</li>
+	<li>Added real-time input field checking, basic point name suggest</li>
+	<li>Improved auto-complete behaviour</li>
+	<li>Minor bug fixes</li>
+</ul>
+
+<span class="i u">Known bugs / limitations:</span>
+<ul>
+	<li>Manipulation of sketches on touch devices is clumsy</li>
+	<li>Not tested on many mobile platforms</li>
+	<li>Zooming sketch far from active operation / near limits produces unpredictable results</li>
+	<li>Tabbing far past end of form elements causes sketch controls to disappear</li>
+	<li>Internet Explorer versions 11 and below struggle to render SVG graphics</li>
+</ul>
+
+<h5><a href="http://q-cogo.com/archive-v1-2" title="Q-Cogo v. 1.2 (Beta)" onclick="return Win('http://q-cogo.com/archive-v1-2');"><span class="u b">Q-Cogo v. 1.2 (Beta) &ndash; Jan 1, 2010</span></a></h5>
+
+<span class="i u">Overview:</span>
+<ul>
+	<li>Zooming and panning of all sketches</li>
+	<li>Triangle and curve solver</li>
+	<li>Shortcut keys for all major operations</li>
+	<li>Input constants, distance and area units</li>
+	<li>Input expressions / existing point expressions</li>
+	<li>Improved auto-complete behaviour</li>
+	<li>Bug fixes</li>
+</ul>
+
+<span class="i u">Known bugs / limitations:</span>
+<ul>
+	<li>Removing focus from browser window while editing points record corrupts record behaviour in some browsers</li>
+	<li>Zooming in on some curves produces nonsense sketch</li>
+	<li>Meaningless "Charcode" JavaScript warning produced in some versions of Firefox</li>
+</ul>
+
+<h5><a href="http://q-cogo.com/archive-v1-1" title="Q-Cogo v. 1.1 (Beta)" onclick="return Win('http://q-cogo.com/archive-v1-1');"><span class="u b">Q-Cogo v. 1.1 (Beta) &ndash; Sept 1, 2009</span></a></h5>
+
+<span class="i u">Overview:</span>
+<ul>
+	<li>Capable of basic plane survey computations, area calculations, and point manipulations</li>
+	<li>Point import and export possible</li>
+	<li>Automatic sketches provided for cogo operations</li>
+</ul>
+
+<span class="i u">Known bugs / limitations:</span> 
+<ul>
+	<li>Improperly entered radial points produce confusing alerts and possible minor JavaScript error</li>
+	<li>Improperly entered HA in traverse menu produces nonsense results</li>
+	<li>Point sort does not work properly for mixed numbers and strings</li>
+	<li>Point suggest disappears when scroll bar clicked in some browsers</li>
+</ul>
+
+<h5>Future Versions</h5>
+
+Future versions of Q-Cogo MAY include: cloud storage and account features, least squares adjustments, Helmert's transformation, automatic error propagation, sketch image outputting and DXF export, more complex linework, labelling and point-and-click drafting facilities, clothoid and roading calculations, map projections, heighting, and pro-rata operations.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="DownloadTip"><div class="tooltip">
+
+<h4>DOWNLOAD</h4>
+
+Q-Cogo can be downloaded to your computer and used when you're not connected to the internet. <br><br>
+
+<a href="q-cogo.zip" title="Download Q-Cogo" onclick="return Win('q-cogo.zip');">Download</a> the zipped folder and unzip it. The folder contains the current source code (HTML, CSS, and JavaScript), for reference and improvement. To run Q-Cogo, open "index.html" in an Internet browser. <br><br>
+
+Do not choose "Save Page As ..." in your browser. This method of saving Q-Cogo is unreliable, and may produce a large variety of errors. <br><br>
+
+On some mobile devices, adding Q-Cogo to your home screen will allow you to access Q-Cogo like an app instead of a web page.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="GeneralTip"><div class="tooltip">
+
+<h4>USING Q-COGO</h4>
+
+You can start entering data and performing calculations as soon as Q-Cogo loads. If you don't need to save your work, just exit the browser window when you're finished. Leaving Q-Cogo or refreshing the page will erase any unsaved data.
+
+<h5>Saving Your Work</h5>
+
+If you want to save your work (points, lines, settings and records) to your computer, first name your job at the left side of the title bar. Next, click the <i class="fa fa-lg fa-floppy-o"></i> icon to save to your local machine. Control over the default save location is managed through your browser. <br><br>
+
+Open saved jobs by clicking on the <i class="fa fa-lg fa-folder-open-o"></i> icon. Q-Cogo files have a ".qcg" file extension and can only be used by Q-Cogo. <br><br>
+
+You can import comma-separated or space-separated points files by choosing "Edit", then pasting the contents of your text file into the points record. Export space-separated points by choosing "Select", then copying the record into a text file. <br><br>
+
+You can copy and paste the contents of any output record into a text file to reference later by choosing "Select".
+
+<h5>Navigation and Data Entry</h5>
+
+Each area in Q-Cogo includes pop-up help topics. Click on the nearest <i class="fa fa-lg fa-question-circle"></i> icon to learn more.<br><br>
+
+Q-Cogo will automatically sketch points, lines, and all COGO operations. Sketches automatically zoom to the most relevant area, but you can zoom or pan manually for a better view. Arcs and lines can be drawn at any time to provide context. <br><br>
+
+Azimuths and angles must be entered in DMS, of the form DDD.MMSSSS... or DDD°MM'SS.SS..." (seconds decimals allowed). Quadrantal bearings can be entered by indicating the quadrant, for example "SW" followed by the bearing. Entering (or clicking) two points separated by two dots ('Pt1..Pt2') will retrieve the distance or azimuth inverse between those points. Simple mathematical expressions are allowed. Data can be entered by clicking on sketch points. <br><br>
+
+Point names and descriptions may be up to 8 characters. Any spaces will be replaced with underscores ('_'). Point names must not include commas (',') asterisks ('*') or dashes ('-'). <br><br>
+
+For faster input, move between data fields by pressing 'Tab'. <br><br>
+
+All Q-Cogo operations have been extensively checked; however, the possibility of error (especially with erroneous input) still exists. Be sure that results make sense, and double-check important work. <br><br>
+
+Please report bugs in detail: NOTANADDRESS.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="PerformanceTip"><div class="tooltip">
+
+<h4>PERFORMANCE</h4>
+
+Q-Cogo was designed to be used in all modern browsers, but performance will vary depending on your choice of web browser and the capabilities of your computer. Q-Cogo uses JavaScript for most functions: to use Q-Cogo, you MUST enable JavaScript in your browser.
+
+<h5>Sketches</h5>
+
+Q-Cogo uses Scalable Vector Graphics (SVG) to sketch calculations. If you can't see sketches being generated automatically while you work, update your browser or switch to a browser that supports SVG.<br><br>
+
+Q-Cogo has no maximum number of points, but zooming and panning sketches with a very large number of points and lines will result in laggy performance on slow computers. To improve performance, turn off point labelling or delete unnecessary points.
+
+<h5>Browsers</h5>
+
+Q-Cogo was designed in <a href="https://www.google.com/chrome/" title="Download Chrome" onclick="return Win('https://www.google.com/chrome/');">Google Chrome</a>. Using Q-Cogo in Chrome is highly recommended for fast, error-free performance. <br><br>
+
+Internet Explorer versions 11 and below render SVG graphics slowly, resulting in long lags and browser crashes. Using Internet Explorer is possible but NOT recommended. <br><br>
+
+Recent standards-compliant browsers should provide good performance. Because Q-Cogo uses modern web components, update your browser to the latest version. In any browser, refreshing or leaving the page will result in your work being lost. Save your work often. <br><br>
+
+Q-Cogo has not been tested with older browsers, many mobile devices, or obscure operating systems. <br><br>
+
+Please report bugs in detail: NOTANADDRESS.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="SketchTip"><div class="tooltip">
+
+<h4>SKETCH</h4>
+
+To navigate around the sketch with a mouse, zoom by using the scroll wheel or 'Page Up' / 'Page Down'. Pan by holding the left mouse button or using the arrow keys. Double-click the sketch or press the middle circle to refresh the sketch. A clickable navigation area is also provided. <br><br>
+
+On a touch-enabled device, zoom by pinching the sketch with two fingers. Drag the sketch with one finger to pan. <br><br>
+
+Clicking on sketch points from a data entry field will add data to the field in the appropriate format. For example, in a field that accepts a list of points, point names will be separated by commas. In a field that accepts an angle or a distance, a 'Pt1..Pt2' expression will be formed instead. <br><br>
+
+Draw arcs and lines by choosing the appropriate tool, then clicking on the points in the sketch as instructed. Delete lines or arcs by choosing the delete tool, then picking the segments. If the line tool is selected, Q-Cogo will draw lines between points as they are stored. <br><br>
+
+Toggle point labels (Point Name | Elevation | Description | None) by clicking on the link. 
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="TipsTricksTip"><div class="tooltip">
+
+<h4>TIPS AND TRICKS</h4>
+
+Q-Cogo will sort and suggest points more effectively if point names are numeric. On mobile platforms, only numbers can be entered. For best results, don't include letters or symbols unless you absolutely need to. <br><br>
+
+If the default text size is too small in your desktop browser, try zooming the page. Q-Cogo is completely scalable, so all components will adjust automatically to fit the screen. <br><br>
+
+To efficiently save files to your computer, set your browser to prompt for a save location instead of using the default download folder. This will allow you to over-write an existing file if you want to. <br><br>
+
+Data can be entered very quickly. Try using the Enter or Tab keys to navigate between fields, picking points by clicking on the drawing, and using "Pt..Pt" notation to retrieve bearing or distance inverses in any field.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="PointsRecordTip"><div class="tooltip">
+
+<h4>POINTS RECORD</h4>
+
+The Points Record displays a list of current points. Points are listed from left to right in the following columns:<br><br>
+
+<span class="par-label">Pt:</span>Point Name <br>
+<span class="par-label">N:</span>Northing <br>
+<span class="par-label">E:</span>Easting <br>
+<span class="par-label">Z:</span>Elevation <br>
+<span class="par-label">Desc:</span>Description <br><br>
+
+To sort the points record, click on the desired column header in the points record title. <br><br>
+
+To load points from a text file, click "edit", then paste the file contents into the text area. Points must be space or comma separated in PNEZD format with no special characters. <br><br>
+
+To expand the points record, double click inside it. Click outside the record to return to normal size.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="EditDeleteTip"><div class="tooltip">
+
+<h4>POINTS ( p )</h4>
+
+To store a point, enter its details as follows, then click "Store". Entering an existing point number will edit that point:<br><br>
+
+<span class="par-label">Pt:</span>Point Name <br>
+<span class="par-label">N:</span>Northing <br>
+<span class="par-label">E:</span>Easting <br>
+<span class="par-label">Z:</span>Elevation <br>
+<span class="par-label">Desc:</span>Description <br><br>
+
+"Pt" and "Desc" may be up to 8 characters. Any spaces will be replaced with underscores ('_'). "Pt" must not must not contain simple mathematical characters, dots ('.'), or commas (','). <br><br>
+
+To delete a point, enter its name, then click "Delete". To delete a list of points, enter the point names separated by commas (','). Two points separated by a dash ('-') or dots ('..') indicate a range of points. Entering "*.*" indicates all current points. <br><br>
+
+To edit a point, enter the Point Name to retrieve the current point values. Edit the values, then choose "Store".
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="TraverseRecordTip"><div class="tooltip">
+
+<h4>TRAVERSE RECORD</h4>
+
+The Traverse Record displays a history of all traverses performed, whether a point was stored or not. To see previous traverses, simply scroll through the text box. <br><br>
+
+To expand the traverse record, double click inside it. Click outside the record to return to normal size.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="TraverseTip"><div class="tooltip">
+
+<h4>TRAVERSE ( t )</h4>
+
+To solve a traverse without storing a point, choose "Solve". To solve a traverse and store a point, choose "Trav" or "SS". ("Trav" will increment the "From" and "BS" inputs, while "SS" will not.) Entering an existing point number will edit that point. <br><br>
+
+Traverses can be performed by "Azimuth" (angle clockwise from North) or by "Angle" (angle clockwise from a backsight point). Switch between traverse types by clicking on the title. <br><br>
+
+Traverses can be performed in 2D (horizontal distance) or 3D (slope distance and zenith angle). Switch between traverse dimensions by clicking on the title. <br><br>
+
+Azimuths and angles must be entered in DMS, of the form DDD.MMSSSS... or DDD°MM'SS.SS..." (seconds decimals and quadrantal bearings allowed). Entering (or clicking) two points separated by two dots ('Pt1..Pt2') will retrieve the distance or azimuth inverse between those points. Simple mathematical expressions are allowed.
+
+<h5>Example</h5>
+
+Load sample data (Points area). Enter the traverse data &ndash; From "103", Azimuth "30.1245", Horizontal Distance "45.123", and choose "Solve". To Store a point, enter the point number and description and choose "Trav" or "SS". <br><br>
+
+Next, click the "Azimuth" link to toggle to Angle mode. Enter "102" as the Backsight point (leave the other data in place) and choose "Solve". Notice that the angle is now measured from point 102 instead of from North. <br><br>
+
+Toggling from 2D to 3D will allow you to enter a Zenith Angle and Slope Distance instead of a Horizontal Distance. Don't forget to enter the heights of your instrument and target!
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="InverseRecordTip"><div class="tooltip">
+
+<h4>INVERSE RECORD</h4>
+
+The Inverse Record displays a history of all inverses performed. To see previous inverses, simply scroll through the text box. <br><br>
+
+To expand the inverse record, double click inside it. Click outside the record to return to normal size.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="InverseTip"><div class="tooltip">
+
+<h4>INVERSE ( i )</h4>
+
+Inverses can be performed between two points or between a point and a line, the line being defined by two points. Switch between inverse types by clicking on the title. <br><br>
+
+Inverses can be performed in 3D or, for simplicity, in 2D. Switch between inverse dimensions by clicking on the title.
+
+<h5>Example</h5>
+
+Load sample data (Points area). Enter the inverse points &ndash; From "514", To "512", and choose "Solve". <br><br>
+
+Next, click the "Point" link to toggle to Line mode. 514 and 512 are now the Start and End points of a line. Enter "507" as the From point and choose "Solve".
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="IntersectRecordTip"><div class="tooltip">
+
+<h4>INTERSECT RECORD</h4>
+
+The Intersect Record displays a history of all intersections performed, whether a point was stored or not. To see previous intersections, simply scroll through the text box. <br><br>
+
+To expand the intersect record, double click inside it. Click outside the record to return to normal size.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="IntersectTip"><div class="tooltip">
+
+<h4>INTERSECT ( x )</h4>
+
+To solve an intersection without storing a point, choose "Solve". To solve an intersection and store a point, choose "Store". Entering an existing point number will edit that point. <br><br>
+
+Intersections can be performed between any two points with a non-zero horizontal distance between them. The intersection may be "Brg-Brg" (two directions), "Brg-Dist" (a direction and a distance) or "Dist-Dist" (two distances). Switch between intersection types by clicking on the title. <br><br>
+
+Intersections may only be performed in 2D. Resulting points will be stored with an elevation of zero. <br><br>
+
+Azimuths must be entered in DMS, of the form DDD.MMSSSS... or DDD°MM'SS.SS..." (seconds decimals and quadrantal bearings allowed). Entering (or clicking) two points separated by two dots ('Pt1..Pt2') will retrieve the distance or azimuth inverse between those points. Simple mathematical expressions are allowed.
+
+<h5>Example</h5>
+
+Load sample data (Points area). Enter the Bearing-Bearing intersection data &ndash; From "510", Azimuth "130.2345", To "513", Azimuth "245.3255", and choose "Solve". To Store a point, enter the point number and description and choose "Store". <br><br>
+
+Next, click the "Brg-Brg" link to toggle to Bearing-Distance and Distance-Distance modes. Try entering your own data. The last two modes produce 2 solutions &ndash; you'll be asked which solution you want to use.  <br><br>
+
+Remember that parallel bearings don't intersect, and calculations involving distances won't intersect if a distance is too small or too large!
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="TransformRecordTip"><div class="tooltip">
+
+<h4>TRANSFORM RECORD</h4>
+
+The Transform Record displays a history of all transformations performed (shifts, scales and rotations). To see previous transformations, simply scroll through the text box. <br><br>
+
+To expand the transform record, double click inside it. Click outside the record to return to normal size.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="TransformTip"><div class="tooltip">
+
+<h4>TRANSFORM ( f )</h4>
+
+To transform a list of points, enter the point names separated by commas (','). Two points separated by a dash ('-') or dots ('..') indicate a range of points.  Entering "*.*" indicates all current points. Choose to transform By "Values" or By "Points" by clicking on the title.<br><br>
+
+Points may be: <br><br>
+
+<ul>
+	<li>Shifted ("+N", "+E", or "+Z" in By Values mode, or "Az" and "Dist" in By Points mode), </li>
+	<li>Scaled by a scale factor ("SF"), or</li>
+	<li>Rotated ("Rot" in By Values mode, or "Dir 1" and "Dir 2" in By Points mode).</li>
+</ul>
+
+If scaling or rotating points, an "About" point must be entered. <br><br>
+
+The transformation will preserve parallel lines and distance ratios &ndash; that is, a transformed square will remain a square. <br><br>
+
+Angles must be entered in DMS, of the form DDD.MMSSSS... or DDD°MM'SS.SS..." (seconds decimals and quadrantal bearings allowed). Simple mathematical expressions are allowed when entering angles or distances. <br><br>
+
+In By Values mode ONLY, Entering (or clicking) two points separated by two dots ('Pt1..Pt2') will retrieve the appropriate 1-dimensional difference between those points (Northing, Easting or Elevation). In By Points mode, this notation will retrieve the distance or azimuth inverse between those points as usual.
+
+<h5>Example</h5>
+
+Load sample data (Points area). Enter the transform data &ndash; Points "601..606", About "605", Northing Shift "-5.125", Easting Shift "-4.915", Elevation Shift "1.000", Rotation "355.2705" and choose "Transform". Leave Scale Factor blank. Choose to commit to the transformation to edit the points. <br><br>
+
+Notice that the house has been moved and rotated within the lot. Linework will follow points when they are edited or transformed. <br><br>
+
+Next, click the "Values" link to toggle to Points mode. Enter an azimuth of "6..1", a distance of "3", and an Elevation Shift of "601..6". Enter "606..601" for Direction 1, and "1..6" for Direction 2. Tranform the points. <br><br>
+
+Notice that the house has been turned to the destination direction &ndash; parallel to the West lot boundary. The elevations have all been shifted to 0, which was the difference between points 601 and 6. The house has been shifted along an azimuth parallel to the West boundary. <br><br>
+
+In the Values mode, try entering "104..515" in the Northing Shift, Easting Shift, and Elevation Shift areas. Notice how only the 1-dimensional component is returned instead of the usual 2-dimensional inverse value.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="AdjustRecordTip"><div class="tooltip">
+
+<h4>ADJUST RECORD</h4>
+
+The Adjust Record displays a history of all traverse adjustments performed. To see previous adjustments, simply scroll through the text box. To see full details of even the most recent adjustment, you will need to expand the record or scroll up. <br><br>
+
+To expand the adjust record, double click inside it. Click outside the record to return to normal size.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="AdjustTip"><div class="tooltip">
+
+<h4>ADJUST ( j )</h4>
+
+To perform a traverse adjustment, enter the required existing points, always in the direction of the traverse progression. An asterisk ('*') after a point (eg: Pt*) indicates that the point is a sideshot from the last main traverse point. <br><br>
+
+"Start" point(s) are the 1-2 fixed points at the beginning of the traverse. These points cannot be sideshots and will not be adjusted.<br><br>
+
+"Close" point(s) are the 1-2 fixed points at the end of the traverse. These points cannot be sideshots and will not be adjusted. Start and Close points may be the same.<br><br>
+
+"Adj", or Adjust points, are the points which will be adjusted. At least 2 main traverse (non-sideshot) points must be entered, or at least 3 if 2 close points are entered. The last 1-2 main traverse Adjust points must match the 1-2 Close points. <br><br>
+
+If 2 Start points and 2 Close points are entered, an angle balance will be performed prior to the compass rule adjustment. If only 1 Start and/or Close point is entered, only a compass rule adjustment will be performed.
+
+<h5>Example</h5>
+
+Load sample data (Points area). Enter data as follows to form a closed-loop traverse: <br><br>
+
+<ul>
+	<li>Start points: "101,102"</li>
+	<li>Close points: "101,102"</li>
+	<li>Adjust points: "103,1*,510*,514*,104,4*,515*,105,106"</li>
+</ul>
+
+Choose "Solve" to see results. Close points do not need to be the same as Start points.
+
+<h5>Tips</h5>
+
+Points, even Start and Close points, must always be entered in the direction of the traverse progression. The last 1-2 main traverse Adjust points must correspond to the 1-2 Close points.<br><br>
+
+Always check the results and the sketch using the "Solve" button before using "Adjust" to permanently update the points database.<br><br>
+
+Review that the Adjust settings (in the Settings area) are configured correctly before performing an adjustment. To see more detailed analysis, choose "Detailed" info instead of "Quick".
+
+<h5>Methodology</h5>
+
+Adjustments are performed from existing points, not RAW observations. However, RAW observations are interpolated from existing point coordinates, which produces the same results without requiring a separate observation data file.<br><br>
+
+Traverses are adjusted in two steps: Angle Balance and Compass Rule.<br><br>
+
+Angle Balance compares the calculated closing azimuth to the observed closing azimuth. If the closure is acceptable, each observed angle receives an identical adjustment, regardless of the length of the observation line. Angle balance requires 2 start points and 2 close points to work. If you want to adjust using only the compass rule, enter only 1 Start point and/or 1 Close point.<br><br>
+
+If you only wish to enter a closing angle (no distance was observed), a dummy point must be entered, preferably at the known closing distance.<br><br>
+
+Compass Rule adjusts points based on the traverse misclosure Angle Balance. (Remember, balancing angles can sometimes make the traverse closure larger.) Coordinates are adjusted based on line length, with longer observations receiving larger adjustments.<br><br>
+
+Balancing a traverse with only a fixed opening/closing azimuth is not yet possible in Q-Cogo. Starting on 2 fixed points at the initial azimuth will approximate this result, but the first observed distance will be held fixed.
+
+<h5>Misclosure Calculations</h5>
+
+Angle misclosure is calculated by comparing opening and closing azimuths, only if 2 Start points and 2 Close points are entered.<br><br>
+
+Distance misclosure is calculated at the first Close point. The second close point will be used for angle misclosure calculations only.<br><br>
+
+Traverse length is calculated from the last Start point to the first Close point. Distances between Start and Close points are not part of the traverse (and are not necessarily observed) and cannot be included in the traverse length.<br><br>
+
+Relative precision is computed by dividing the traverse length by the total misclosure and is rounded to 2 significant figures.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="AreaRecordTip"><div class="tooltip">
+
+<h4>AREA RECORD</h4>
+
+The Area Record displays a history of all area calculations performed. To see previous areas, simply scroll through the text box. <br><br>
+
+To expand the area record, double click inside it. Click outside the record to return to normal size.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="AreaTip"><div class="tooltip">
+
+<h4>AREA ( a )</h4>
+
+To calculate the area bounded by a list of points, along with its corresponding perimeter, enter the point names separated by commas (','). Two points separated by a dash ('-') or dots ('..') indicate a range of points. Entering "*.*" indicates all current points, in their current order. <br><br>
+
+An asterisk ('*') after a point (eg: Pt*) indicates a radial point on a curve with the shorter of two possible arc lengths. An asterisk before a point (eg: *Pt) indicates the longer arc length. <br><br>
+
+Bounding points and curves may be entered in a clockwise or counter-clockwise manner. The bounding path will automatically close to the first point. The bounding path must not cross itself or use a non-radial point more than once. <br><br>
+
+Before accepting an area calculation, inspect the sketch of the operation to ensure that your path does not intersect or meet itself, and that any curves deflect in the correct direction.
+
+<h5>Example</h5>
+
+Load sample data (Points area). Define the area of the outlined lot as follows: "1,6,5*,2,3,4". Notice that the "5*" denotes the centre of the curve. Eliminating this point and entering "1,6,2,3,4" excludes the segment area.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="SolverRecordTip"><div class="tooltip">
+
+<h4>SOLVER RECORD</h4>
+
+The Solver Record displays a history of all solver calculations performed. To see previous triangle or curve solutions, simply scroll through the text box. <br><br>
+
+To expand the solver record, double click inside it. Click outside the record to return to normal size.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="SolverTip"><div class="tooltip">
+
+<h4>SOLVER ( l )</h4>
+
+Use the solver to solve triangles or circular curves. Switch between solver shapes by clicking on the title. <br><br>
+
+To solve a triangle, enter 3 values, leave the other 3 blank, and choose "Solve". At least 1 of the values must be a side length.<br><br>
+
+To solve a circular curve, enter any 2 values, leave the other 3 blank, and choose "Solve". If entering Tangent and Length, Tangent must be negative to indicate a Delta greater that 180°. <br><br>
+
+In either Triangle or Curve mode, some value combinations may produce impossible shapes or shapes with extremely sensitive geometry. <br><br>
+
+Angles must be entered in DMS, of the form DDD.MMSSSS... or DDD°MM'SS.SS..." (seconds decimals allowed). Entering two points separated by two dots ('Pt1..Pt2') will retrieve the distance or azimuth inverse between those points. Simple mathematical expressions are allowed.
+
+<h5>Example</h5>
+
+In Triangle mode, enter 45°00'00" for A, "23.000" for a, "30.000" for b, and choose "Solve". Leave the other values blank. Notice that this input is ambiguous, so Q-Cogo provides two possible solutions. Leaving A blank and entering 45°00'00" for B produces only 1 solution. <br><br>
+
+Next, click "Triangle" to toggle to Curve mode. Enter "150.000" for Radius, "126.000" for Length, and choose "Solve". Entering "-23.000" for Tangent and "126.000" for Length will yield a curve with a Delta value larger than 180°. (Note that a positive Tangent in this same case would yield an impossible curve.)
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="PrecisionTip"><div class="tooltip">
+
+<h4>PRECISION</h4>
+
+To change the display precision for a particular value type, simply pick it from the appropriate drop down list. Settings will be reflected immediately in the points record. Other records will reflect the change in the results of the next operation. <br><br>
+
+Changing display precision will not affect stored point precision. Stored points always carry ten decimal places to minimize rounding errors.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="ConstantsTip"><div class="tooltip">
+
+<h4>INPUT CONSTANTS</h4>
+
+To apply a scale factor to entered distances, enter a value other than 1 for "SF". The scale factor will not be applied to coordinates, other scale factors, or HI / HT. <br><br>
+
+To apply a rotation angle to entered azimuths, enter a non-zero value for "Rot". The angle will not be applied to other rotations, interior angles, or zenith angles. <br><br>
+
+Angles must be entered in DMS, of the form DDD.MMSSSS... or DDD°MM'SS.SS..." (seconds decimals and quadrantal bearings allowed). Entering (or clicking) two points separated by two dots ('Pt1..Pt2') will retrieve the distance or azimuth inverse between those points. Simple mathematical expressions are allowed.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="UnitsTip"><div class="tooltip">
+
+<h4>UNITS</h4>
+
+To change the working units, simply select a new value from the drop-down list. Changing units only changes the displayed units and does NOT apply a scale factor. To scale existing values, use "Transform". To scale input values, use "Input Constants" (above). <br><br>
+
+Mixing metric and imperial units is not allowed. For example, selecting "Feet" as a distance unit will automatically change the area unit to "Acre". Changing "Disp?" changes the unit output visibility.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="TolerancesTip"><div class="tooltip">
+
+<h4>TRAVERSE TOLERANCES</h4>
+
+To change the traverse closure tolerance settings, simply select new values from the drop-down lists. <br><br>
+
+If the values calculated during the course of the traverse adjustment are higher than the chosen tolerances, the adjustment will fail. <br><br>
+
+"Prec" is the minimum relative precision for the traverse. "Misc" is the maximum allowable absolute distance misclosure. "Angle" is the maximum allowable angle adjustment to each traverse leg. <br><br>
+
+The "Info" toggle controls the level of detail in the traverse report. Choose "Quick" for a brief overview, and "Detailed" for full analysis.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="HelpTip"><div class="tooltip">
+
+<h4>HELP ( h )</h4>
+
+To get help on a topic, choose the appropriate link from the list. The help content box will scroll to the topic. Scroll through the help content box to browse all help topics. <br><br>
+
+Each area in Q-Cogo includes pop-up help topics relevant to that area. Click on the nearest "?" icon learn more about using a feature.
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="ShortcutTip"><div class="tooltip">
+
+<h4>SHORTCUT KEYS</h4>
+
+For quick access, each menu item has a shortcut key &ndash; to find it, hover over the menu link. The following is a list of current menu shortcut keys: <br><br>
+
+<span class="Lpar-label">Points:</span>p <br>
+<span class="Lpar-label">Traverse:</span>t <br>
+<span class="Lpar-label">Inverse:</span>i <br>
+<span class="Lpar-label">Intersect:</span>x <br>
+<span class="Lpar-label">Transform:</span>f <br>
+<span class="Lpar-label">Adjust:</span>j <br>
+<span class="Lpar-label">Area:</span>a <br>
+<span class="Lpar-label">Solver:</span>l <br>
+<span class="Lpar-label">Settings:</span>s <br>
+<span class="Lpar-label">Help:</span>h <br><br>
+
+To navigate through the sketch / inputs: <br><br>
+
+<span class="Lpar-label">Pan:</span>Arrow Keys <br>
+<span class="Lpar-label">Zoom:</span>Page up / Page Down <br>
+<span class="Lpar-label">Refresh:</span>Home <br>
+<span class="Lpar-label">Next:</span>Tab / Enter <br><br>
+
+To control the sketch linework tools: <br><br>
+
+<span class="Lpar-label">Delete:</span>Ctrl+d <br>
+<span class="Lpar-label">Arcs:</span>Ctrl+a <br>
+<span class="Lpar-label">Lines:</span>Ctrl+l <br>
+<span class="Lpar-label">Cancel:</span>Esc <br>
+
+</div></div>
+
+	<div class="tall-spacer">&#160;</div>
+
+<div id="Abbreviations"><div class="tooltip">
+
+<h4>ABBREVIATIONS</h4>
+
+The following is a complete index of technical abbreviations used in Q-Cogo:<br><br>
+
+<span class="par-label">':</span>Feet <br>
+<span class="par-label">+E:</span>Easting Shift <br>
+<span class="par-label">+N:</span>Northing Shift <br>
+<span class="par-label">+Z:</span>Elevation Shift <br>
+<span class="par-label">BC:</span>Beginning of Curve <br>
+<span class="par-label">Adj:</span>Adjust <br>
+<span class="par-label">Ang:</span>Angle <br>
+<span class="par-label">Az:</span>Azimuth <br>
+<span class="par-label">Brg:</span>Bearing <br>
+<span class="par-label">BS:</span>Backsight <br>
+<span class="par-label">Desc:</span>Description <br>
+<span class="par-label">Dir:</span>Direction <br>
+<span class="par-label">Disp:</span>Display <br>
+<span class="par-label">Dist:</span>Distance <br>
+<span class="par-label">DMS:</span>Degrees Minutes Seconds <br>
+<span class="par-label">E:</span>Easting <br>
+<span class="par-label">EC:</span>End of Curve <br>
+<span class="par-label">ft:</span>Feet <br>
+<span class="par-label">Grd:</span>Grade <br>
+<span class="par-label">Ha:</span>Hectare <br>
+<span class="par-label">HA:</span>Horizontal Angle <br>
+<span class="par-label">HD:</span>Horizontal Distance <br>
+<span class="par-label">HI:</span>Height of Instrument <br>
+<span class="par-label">HT:</span>Height of Target <br>
+<span class="par-label">Len:</span>Length <br>
+<span class="par-label">m:</span>Metres <br>
+<span class="par-label">Misc:</span>Misclosure <br>
+<span class="par-label">MO:</span>Mid-Ordinate <br>
+<span class="par-label">N:</span>Northing <br>
+<span class="par-label">Prec:</span>Precision <br>
+<span class="par-label">Pt:</span>Point Name <br>
+<span class="par-label">Rad:</span>Radius <br>
+<span class="par-label">Rot:</span>Rotation <br>
+<span class="par-label">SD:</span>Slope Distance <br>
+<span class="par-label">SF:</span>Scale Factor <br>
+<span class="par-label">sq:</span>Square <br>
+<span class="par-label">SS:</span>Sideshot <br>
+<span class="par-label">Stn:</span>Stationing <br>
+<span class="par-label">Tang:</span>Tangent <br>
+<span class="par-label">Trav:</span>Traverse <br>
+<span class="par-label">VD:</span>Vertical Distance <br>
+<span class="par-label">Z:</span>Elevation <br>
+<span class="par-label">ZA:</span>Zenith Angle <br>
+
+<br>
+
+</div></div></div>
+
+
+
+<div class="help-index">
+
+<a href="javascript:void(0)" title="About Q-Cogo" onclick="ScrollHelp('AboutTip')">About</a> <br>
+<a href="javascript:void(0)" title="Copyright and terms of Q-Cogo" onclick="ScrollHelp('CopyrightTip')">Copyright, Terms</a> <br>
+<a href="javascript:void(0)" title="Versions of Q-Cogo" onclick="ScrollHelp('VersionTip')">Versions</a> <br>
+<a href="javascript:void(0)" title="How to download Q-Cogo" onclick="ScrollHelp('DownloadTip')">Download</a> <br>
+<a href="javascript:void(0)" title="How to use Q-Cogo" onclick="ScrollHelp('GeneralTip')">Using Q-Cogo</a> <br>
+<a href="javascript:void(0)" title="Optimizing Q-Cogo's performace" onclick="ScrollHelp('PerformanceTip')">Performance</a> <br>
+<a href="javascript:void(0)" title="Optimizing Q-Cogo's performace" onclick="ScrollHelp('SketchTip')">Sketch</a> <br>
+<a href="javascript:void(0)" title="Helpful tips and tricks" onclick="ScrollHelp('TipsTricksTip')">Tips and Tricks</a> <br>
+
+<hr>
+
+<a href="javascript:void(0)" title="Help with points" onclick="ScrollHelp('PointsRecordTip')">Points</a> <br>
+<a href="javascript:void(0)" title="Help with traverse" onclick="ScrollHelp('TraverseRecordTip')">Traverse</a> <br>
+<a href="javascript:void(0)" title="Help with inverse" onclick="ScrollHelp('InverseRecordTip')">Inverse</a> <br>
+<a href="javascript:void(0)" title="Help with intersect" onclick="ScrollHelp('IntersectRecordTip')">Intersect</a> <br>
+<a href="javascript:void(0)" title="Help with transform" onclick="ScrollHelp('TransformRecordTip')">Transform</a> <br>
+<a href="javascript:void(0)" title="Help with adjust" onclick="ScrollHelp('AdjustRecordTip')">Adjust</a> <br>
+<a href="javascript:void(0)" title="Help with area" onclick="ScrollHelp('AreaRecordTip')">Area</a> <br>
+<a href="javascript:void(0)" title="Help with solver" onclick="ScrollHelp('SolverRecordTip')">Solver</a> <br>
+<a href="javascript:void(0)" title="Help with settings" onclick="ScrollHelp('PrecisionTip')">Settings</a> <br>
+<a href="javascript:void(0)" title="Help with help" onclick="ScrollHelp('HelpTip')">Help</a>
+
+<hr>
+
+<a href="javascript:void(0)" title="Q-Cogo shortcut keys" onclick="ScrollHelp('ShortcutTip')">Shortcut Keys</a> <br>
+<a href="javascript:void(0)" title="Abbreviations used in Q-Cogo" onclick="ScrollHelp('Abbreviations')">Abbreviations</a> <br>
+
+</div></div></div>
+
+
+
+	<!-- Error to display if Javascript is turned off -->
+
+
+
+<noscript>
+
+<div class="header-bar"><h2>JavaScript</h2></div>
+
+<div class="holder" id="JSerror" style="z-index: 15; background-color: #eee; display: block; height: 600px;">
+
+<div class="fullset"><h3>Details:</h3>
+
+<div class="highlight"> 
+
+<p class="doc"><span class="b">Your browser is currently not running JavaScript. Q-Cogo uses JavaScript for all land survey calculations: to use Q-Cogo, you MUST enable JavaScript in your browser.</span></p>
+
+</div>
+
+<p class="doc"> <br>
+
+<span class="u b">Why does Q-Cogo use JavaScript?</span> <br>
+
+JavaScript is executed on your computer instead of on a web server. This means that your calculations get processed faster and you get your results sooner. It also means that you don't have to be connected to the internet to do land survey calculations in Q-Cogo. <br><br>
+
+<span class="u b">What should I do about this?</span> <br>
+
+Just turn on JavaScript in your browser. The method for doing this varies by browser, but click on your browser's "help" menu to get started. Most internet browsers default to allowing JavaScript unless you make a point of turning it off. <span class="u">IF YOU ARE RUNNING A LOCAL VERSION OF Q-COGO IN MS INTERNET EXPLORER</span> you must first confirm that you wish to allow Q-Cogo run scripts. To do this, click on the yellow error bar at the top of the screen and choose "Allow Blocked Content". <br><br>
+
+<span class="u b">Is it safe to turn on JavaScript?</span> <br>
+
+Q-Cogo only uses JavaScript to calculate and sketch survey computations and to navigate through calculation areas. Q-Cogo cannot and will not harm your computer. It is possible for websites to exploit bugs in JavaScript to harm your computer. However, these websites are very rare. JavaScript is very safe to turn on, especially in a modern, frequently updated browser. <br><br>
+
+If you have questions or concerns about JavaScript or Q-Cogo, please contact us: <span class="u b">info[ ]q-cogo[ ]com</span>. (Replace the first '[ ]' with '@' and the second '[ ]' with '.') </p>
+
+
+</div></div>
+
+</noscript>
+
+
+
+	<!-- Traverse -->
+
+
+
+<div class="holder" id="traverse">
+
+<form name="traverse" autocomplete="off">
+
+<div class="set"><h3>Traverse Record<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="traverse-headerlink">&#160;</a></h3>
+
+<textarea class="large" name="TraverseLog" id="TraverseLog" readonly="readonly" ondblclick="TextExpand(this)" onblur="TextContract(this)" wrap="off"></textarea>
+
+<p class="right"><a href="javascript:void(0)" class="sel" title="Select this record" onclick="SelectField(document.traverse.TraverseLog)">Select</a>|<a href="javascript:void(0)" class="del" title="Clear this record" onclick="ClearField('TraverseLog')">Clear</a></p>
+
+</div>
+
+</form>
+
+
+	<!-- Traverse inputs -->
+
+
+
+<div class="subset"><h3><a href="javascript:void(0)" class="ts" title="Change traverse dimension [2D | 3D]" onclick="TravDimSwap()" id="TravDim">2D</a> by <a href="javascript:void(0)" class="ts" title="Change traverse type [Azimuth | Angle]" onclick="TravTypeSwap()" id="TravType">Azimuth</a><a href="javascript:void(0)" class="tt" title="Get help with this feature" id="traverse-tiplink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label"><span class="small-label">From:</span> <input class="short points" data-content="pointsingle" type="tel" id="TravFrom" value="" onfocus="createAutoComplete('TravFrom', 'TravSuggest1', 0, 0);"></p>
+
+<div id="TravSuggest1" class="sugg-div"></div>
+
+<p class="label"><span class="small-label-hidden" id="TravValueBSLabel">BS:</span> <input class="short-hidden points" data-content="pointsingle" type="tel" id="TravBS" value="" onfocus="createAutoComplete('TravBS', 'TravSuggest2', 0, 0);"></p>
+
+<div id="TravSuggest2" class="sugg-div"></div>
+
+<p class="label"><span class="small-label-hidden" id="TravValueHILabel">HI:</span> <input class="short-hidden" data-content="datadist" type="tel" id="TravHI" value="" data-original-value="0" onblur="StrictCheck(this, 0, 0, 'decimal');"></p>
+<p class="label"><span class="small-label-hidden" id="TravValueHTLabel">HT:</span> <input class="short-hidden" data-content="datadist" type="tel" id="TravHT" value="" data-original-value="0" onblur="StrictCheck(this, 0, 0, 'decimal');"></p>
+<p class="label"><span class="small-label" id="TravValueAngLabel">Az:</span> <input class="short" data-content="dataang" type="tel" id="TravAng" value="" onblur="StrictCheck(this, 0, '', 'DMS');"></p>
+<p class="label"><span class="small-label" id="TravValueDistLabel">HD:</span> <input class="short" data-content="datadist" type="tel" id="TravDist" value="" onblur="StrictCheck(this, 0, '', 'decimal');"></p>
+<p class="label"><span class="small-label-hidden" id="TravValueZALabel">ZA:</span> <input class="short-hidden" data-content="dataang" type="tel" id="TravZA" value="" onblur="StrictCheck(this, 0, '', 'DMS');"></p>
+
+<p class="right"><a href="javascript:void(0)" class="clc" title="Solve traverse without storing point" onclick="Traverse(0, 0)">Solve</a></p>
+
+<hr>
+
+<p class="label"><span class="small-label">Pt:</span> <input class="short" data-content="pointsingle" type="tel" id="TravPt" value="" onfocus="AutoPoint(this);" onblur="StrictPoint(this);"></p>
+<p class="label"><span class="small-label">Desc:</span> <input class="short" data-content="datatext" type="text" id="TravDesc" value="" data-original-value="COGO" onfocus="createAutoComplete('TravDesc', 'TravSuggest3', 4, 0);"></p>
+
+<div id="TravSuggest3" class="sugg-div"></div>
+
+<p class="right"><a href="javascript:void(0)" class="add" title="Solve traverse and store point (traverse: increment stations)" onclick="Traverse(1, 1)">Trav</a>|<a href="javascript:void(0)" class="add" title="Solve traverse and store point (sideshot: don't increment stations)" onclick="Traverse(1, 0)">SS</a></p>
+
+</div>
+
+</div></div>
+
+
+	<!-- Inverse -->
+
+
+
+<div class="holder" id="inverse">
+
+<form name="inverse" autocomplete="off">
+
+<div class="set"><h3>Inverse Record<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="inverse-headerlink">&#160;</a></h3>
+
+<textarea class="large" name="InverseLog" id="InverseLog" readonly="readonly" ondblclick="TextExpand(this)" onblur="TextContract(this)" wrap="off"></textarea>
+
+<p class="right"><a href="javascript:void(0)" class="sel" title="Select this record" onclick="SelectField(document.inverse.InverseLog)">Select</a>|<a href="javascript:void(0)" class="del" title="Clear this record" onclick="ClearField('InverseLog')">Clear</a></p>
+
+</div>
+
+</form>
+
+
+	<!-- Inverse inputs -->
+
+
+
+<div class="subset"><h3><a href="javascript:void(0)" class="ts" title="Change inverse dimension [3D | 2D]" onclick="InvDimSwap()" id="InvDim">3D</a> Point to <a href="javascript:void(0)" class="ts" title="Change inverse type [Point | Line]" onclick="InvTypeSwap()" id="InvType">Point</a><a href="javascript:void(0)" class="tt" title="Get help with this feature" id="inverse-tiplink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label"><span class="small-label-hidden" id="InvPtPtLabel">From:</span> <input class="short-hidden points" data-content="pointsingle" type="tel" id="InvPtPt" value="" onfocus="createAutoComplete('InvPtPt', 'InvSuggest1', 0, 0);"></p>
+
+<div id="InvSuggest1" class="sugg-div"></div>
+
+<p class="label"><span class="small-label" id="InvFromPtLabel">From:</span> <input class="short points" data-content="pointsingle" type="tel" id="FromPt" value="" onfocus="createAutoComplete('FromPt', 'InvSuggest2', 0, 0);"></p>
+
+<div id="InvSuggest2" class="sugg-div"></div>
+
+<p class="label"><span class="small-label" id="InvToPtLabel">To:</span> <input class="short points" data-content="pointsingle" type="tel" id="ToPt" value="" onfocus="createAutoComplete('ToPt', 'InvSuggest3', 0, 0);"></p>
+
+<div id="InvSuggest3" class="sugg-div"></div>
+
+<p class="right"><a href="javascript:void(0)" class="clc" title="Solve inverse" onclick="Inverse()">Solve</a></p>
+
+</div>
+
+</div></div>
+
+
+	<!-- Intersect -->
+
+
+
+<div class="holder" id="intersect">
+
+<form name="intersect" autocomplete="off">
+
+<div class="set"><h3>Intersect Record<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="intersect-headerlink">&#160;</a></h3>
+
+<textarea class="large" name="IntersectLog" id="IntersectLog" readonly="readonly" ondblclick="TextExpand(this)" onblur="TextContract(this)" wrap="off"></textarea>
+
+<p class="right"><a href="javascript:void(0)" class="sel" title="Select this record" onclick="SelectField(document.intersect.IntersectLog)">Select</a>|<a href="javascript:void(0)" class="del" title="Clear this record" onclick="ClearField('IntersectLog')">Clear</a></p>
+
+</div>
+
+</form>
+
+
+	<!-- Intersect inputs -->
+
+
+
+<div class="subset"><h3><a href="javascript:void(0)" class="ts" title="Change intersect type [Brg-Brg | Brg-Dist | Dist-Dist]" onclick="IntersectSwap()" id="IntTitle">Brg-Brg</a><a href="javascript:void(0)" class="tt" title="Get help with this feature" id="intersect-tiplink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label"><span class="small-label">From:</span> <input class="short points" data-content="pointsingle" type="tel" id="IntFrom" value="" onfocus="createAutoComplete('IntFrom', 'IntSuggest1', 0, 0);"></p>
+
+<div id="IntSuggest1" class="sugg-div"></div>
+
+<p class="label"><span class="small-label" id="IntValueFromLabel">Az:</span> <input class="short" data-content="datamisc" type="tel" id="IntValueFrom" value="" onblur="StrictCheck(this, 0, '', 'DMS');"></p>
+<p class="label"><span class="small-label">To:</span> <input class="short points" data-content="pointsingle" type="tel" id="IntTo" value="" onfocus="createAutoComplete('IntTo', 'IntSuggest2', 0, 0);"></p>
+
+<div id="IntSuggest2" class="sugg-div"></div>
+
+<p class="label"><span class="small-label" id="IntValueToLabel">Az:</span> <input class="short" data-content="datamisc" type="tel" id="IntValueTo" value="" onblur="StrictCheck(this, 0, '', 'DMS');"></p>
+
+<p class="right"><a href="javascript:void(0)" class="clc" title="Solve intersection without storing point" onclick="Intersect(0)">Solve</a></p>
+
+<hr>
+
+<p class="label"><span class="small-label">Pt:</span> <input class="short" data-content="pointsingle" type="tel" id="IntPt" value="" onfocus="AutoPoint(this);" onblur="StrictPoint(this);"></p>
+<p class="label"><span class="small-label">Desc:</span> <input class="short" data-content="datatext" type="text" id="IntDesc" value="" data-original-value="COGO" onfocus="createAutoComplete('IntDesc', 'IntSuggest3', 4, 0);"></p>
+
+<div id="IntSuggest3" class="sugg-div"></div>
+
+<p class="right"><a href="javascript:void(0)" class="add" title="Solve intersection and store point" onclick="Intersect(1)">Store</a></p>
+
+</div>
+
+</div></div>
+
+
+
+	<!-- Transform -->
+
+
+
+<div class="holder" id="transform">
+
+<form name="transform" autocomplete="off">
+
+<div class="set"><h3>Transform Record<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="transform-headerlink">&#160;</a></h3>
+
+<textarea class="large" name="TransformLog" id="TransformLog" readonly="readonly" ondblclick="TextExpand(this)" onblur="TextContract(this)" wrap="off"></textarea>
+
+<p class="right"><a href="javascript:void(0)" class="sel" title="Select this record" onclick="SelectField(document.transform.TransformLog)">Select</a>|<a href="javascript:void(0)" class="del" title="Clear this record" onclick="ClearField('TransformLog')">Clear</a></p>
+
+</div>
+
+</form>
+
+
+	<!-- Transform inputs -->
+
+
+
+<div class="subset"><h3>By <a href="javascript:void(0)" class="ts" title="Change transform type [Values | Points]" onclick="TranformSwap()" id="TransTitle">Values</a><a href="javascript:void(0)" class="tt" title="Get help with this feature" id="transform-tiplink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label"><span class="small-label">Pts:</span> <input class="short points" data-content="pointmult" type="tel" id="TransPts" value="" onfocus="createAutoComplete('TransPts', 'TransSuggest1', 0, 1);"></p>
+
+<div id="TransSuggest1" class="sugg-div"></div>
+
+<p class="label"><span class="small-label">About:</span> <input class="short" data-content="pointsingle" type="tel" id="TransAbout" value="" onfocus="createAutoComplete('TransAbout', 'TransSuggest2', 0, 0);"></p>
+
+<div id="TransSuggest2" class="sugg-div"></div>
+
+<hr>
+
+<p class="label"><span class="small-label" id="TransValueLabel1">+N:</span> <input class="short" data-content="datamisc" type="tel" id="TransN" value="" onblur="StrictCheck(this, 0, '', 'dN')"></p>
+<p class="label"><span class="small-label" id="TransValueLabel2">+E:</span> <input class="short" data-content="datadist" type="tel" id="TransE" value="" onblur="StrictCheck(this, 0, '', 'dE')"></p>
+<p class="label"><span class="small-label">+Z:</span> <input class="short" data-content="datadist" type="tel" id="TransZ" value="" onblur="StrictCheck(this, 0, '', 'dZ')"></p>
+<p class="label"><span class="small-label">SF:</span> <input class="short" type="tel" id="TransSF" value="" onblur="StrictCheck(this, 1, '', 'decimal')"></p>
+<p class="label"><span class="small-label" id="TransValueLabel3">Rot:</span> <input class="short" data-content="dataang" type="tel" id="TransHA" value="" onblur="StrictCheck(this, 0, '', 'DMS')"></p>
+
+<p class="label"><span class="small-label-hidden" id="TransValueLabel4">Dir 2:</span> <input class="short-hidden" data-content="dataang" type="tel" id="TransDir2" value="" onblur="StrictCheck(this, 0, '', 'DMS');"></p>
+
+<p class="right"><a href="javascript:void(0)" class="add" title="Transform points" onclick="Transform()">Transform</a></p>
+
+</div>
+
+</div></div>
+
+
+
+	<!-- Adjust -->
+
+
+
+<div class="holder" id="adjust">
+
+<form name="adjust" autocomplete="off">
+
+<div class="set"><h3>Adjust Record<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="adjust-headerlink">&#160;</a></h3>
+
+<textarea class="large" name="AdjustLog" id="AdjustLog" readonly="readonly" ondblclick="TextExpand(this)" onblur="TextContract(this)" wrap="off"></textarea>
+
+<p class="right"><a href="javascript:void(0)" class="sel" title="Select this record" onclick="SelectField(document.adjust.AdjustLog)">Select</a>|<a href="javascript:void(0)" class="del" title="Clear this record" onclick="ClearField('AdjustLog')">Clear</a></p>
+
+</div>
+
+</form>
+
+
+	<!-- Adjust inputs -->
+
+
+
+<div class="subset"><h3>By Compass Rule<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="adjust-tiplink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label"><span class="small-label">Start:</span> <input class="short points" data-content="pointmult" type="tel" id="StartPts" value="" onfocus="createAutoComplete('StartPts', 'AdjustSuggest1', 0, 1);"></p>
+
+<div id="AdjustSuggest1" class="sugg-div"></div>
+
+<p class="label"><span class="small-label">Close:</span> <input class="short points" data-content="pointmult" type="tel" id="ClosePts" value="" onfocus="createAutoComplete('ClosePts', 'AdjustSuggest2', 0, 1);"></p>
+
+<div id="AdjustSuggest2" class="sugg-div"></div>
+
+<p class="label"><span class="small-label">Adj:</span> <input class="short points" data-content="pointmult" type="tel" id="AdjustPts" value="" onfocus="createAutoComplete('AdjustPts', 'AdjustSuggest3', 0, 1);"></p>
+
+<div id="AdjustSuggest3" class="sugg-div"></div>
+
+<p class="right"><a href="javascript:void(0)" class="clc" title="Solve adjustment" onclick="CompassRule(0)">Solve</a>|<a href="javascript:void(0)" class="add" title="Solve adjustment" onclick="CompassRule(1)">Adjust</a></p>
+
+</div>
+
+</div></div>
+
+
+
+	<!-- Area -->
+
+
+
+<div class="holder" id="area">
+
+<form name="area" autocomplete="off">
+
+<div class="set"><h3>Area Record<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="area-headerlink">&#160;</a></h3>
+
+<textarea class="large" name="AreaLog" id="AreaLog" readonly="readonly" ondblclick="TextExpand(this)" onblur="TextContract(this)" wrap="off"></textarea>
+
+<p class="right"><a href="javascript:void(0)" class="sel" title="Select this record" onclick="SelectField(document.area.AreaLog)">Select</a>|<a href="javascript:void(0)" class="del" title="Clear this record" onclick="ClearField('AreaLog')">Clear</a></p>
+
+</div>
+
+</form>
+
+
+	<!-- Area inputs -->
+
+
+
+<div class="subset"><h3>By Perimeter<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="area-tiplink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label"><span class="small-label">Pts:</span> <input class="short points" data-content="pointmult" type="tel" id="AreaPts" value="" onfocus="createAutoComplete('AreaPts', 'AreaSuggest1', 0, 1);"></p>
+
+<div id="AreaSuggest1" class="sugg-div"></div>
+
+<p class="right"><a href="javascript:void(0)" class="clc" title="Solve area" onclick="Area()">Solve</a></p>
+
+</div>
+
+</div></div>
+
+
+
+	<!-- Solver -->
+
+
+
+<div class="holder" id="solver">
+
+<form name="solver" autocomplete="off">
+
+<div class="set"><h3>Solver Record<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="solver-headerlink">&#160;</a></h3>
+
+<textarea class="large" name="SolverLog" id="SolverLog" readonly="readonly" ondblclick="TextExpand(this)" onblur="TextContract(this)" wrap="off"></textarea>
+
+<p class="right"><a href="javascript:void(0)" class="sel" title="Select this record" onclick="SelectField(document.solver.SolverLog)">Select</a>|<a href="javascript:void(0)" class="del" title="Clear this record" onclick="ClearField('SolverLog')">Clear</a></p>
+
+</div>
+
+</form>
+
+
+
+	<!-- Solver inputs -->
+
+
+
+<div class="subset"><h3><a href="javascript:void(0)" class="ts" title="Change solver shape [Triangle | Curve]" onclick="SolverSwap()" id="SolverTitle">Triangle</a><a href="javascript:void(0)" class="tt" title="Get help with this feature" id="solver-tiplink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label"><span class="small-label" id="SolverALabel">A:</span> <input class="short" type="tel" id="SolverA" value="" onblur="StrictCheck(this, 0, '', 'DMS')"></p>
+<p class="label"><span class="small-label" id="SolverBLabel">B:</span> <input class="short" type="tel" id="SolverB" value="" onblur="StrictCheck(this, 0, '', 'DMS')"></p>
+<p class="label"><span class="small-label" id="SolverCLabel">C:</span> <input class="short" type="tel" id="SolverC" value="" onblur="StrictCheck(this, 0, '', 'DMS')"></p>
+<p class="label"><span class="small-label" id="SolveraaLabel">a:</span> <input class="short" type="tel" id="Solveraa" value="" onblur="StrictCheck(this, 0, '', 'decimal')"></p>
+<p class="label"><span class="small-label" id="SolverbbLabel">b:</span> <input class="short" type="tel" id="Solverbb" value="" onblur="StrictCheck(this, 0, '', 'decimal')"></p>
+<p class="label"><span class="small-label" id="SolverccLabel">c:</span> <input class="short" type="tel" id="Solvercc" value="" onblur="StrictCheck(this, 0, '', 'decimal')"></p>
+
+<p class="label"><span class="small-label-hidden" id="SolverDeltaLabel">Delta:</span> <input class="short-hidden" type="tel" id="SolverDelta" value="" onblur="StrictCheck(this, 0, '', 'DMS')"></p>
+<p class="label"><span class="small-label-hidden" id="SolverRadLabel">Rad:</span> <input class="short-hidden" type="tel" id="SolverRad" value="" onblur="StrictCheck(this, 0, '', 'decimal')"></p>
+<p class="label"><span class="small-label-hidden" id="SolverTangLabel">Tang:</span> <input class="short-hidden" type="tel" id="SolverTang" value="" onblur="StrictCheck(this, 0, '', 'decimal')"></p>
+<p class="label"><span class="small-label-hidden" id="SolverLenLabel">Len:</span> <input class="short-hidden" type="tel" id="SolverLen" value="" onblur="StrictCheck(this, 0, '', 'decimal')"></p>
+<p class="label"><span class="small-label-hidden" id="SolverChordLabel">Chord:</span> <input class="short-hidden" type="tel" id="SolverChord" value="" onblur="StrictCheck(this, 0, '', 'decimal')"></p>
+
+<p class="right"><a href="javascript:void(0)" class="clc" title="Solve shape" onclick="Solver()">Solve</a></p>
+
+</div>
+
+</div></div>
+
+
+
+	<!-- Settings -->
+
+
+
+<div class="holder" id="settings">
+
+
+
+	<!-- Precision -->
+
+
+
+<div class="smallset"><h3>Precision<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="settings-tiplink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label">
+
+<span class="small-label">Dist:</span>
+
+<select id="DPrecision">
+   <option value="1">0.1</option>
+   <option value="2">0.01</option>
+   <option value="3" selected="selected">0.001</option>
+   <option value="4">0.0001</option>
+   <option value="5">0.00001</option>
+</select>
+
+</p>
+
+<p class="label">
+
+<span class="small-label">Ang:</span>
+
+<select id="APrecision">
+   <option value="-4">20"</option>
+   <option value="-2">10"</option>
+   <option value="-1">5"</option>
+   <option value="0" selected="selected">1"</option>
+   <option value="1">0.1"</option>
+   <option value="2">0.01"</option>
+   <option value="3">0.001"</option>
+   <option value="4">0.0001"</option>
+   <option value="5">0.00001"</option>
+</select>
+
+</p>
+
+<p class="label">
+
+<span class="small-label">Grd:</span>
+
+<select id="GPrecision">
+   <option value="1" selected="selected">0.1%</option>
+   <option value="2">0.01%</option>
+   <option value="3">0.001%</option>
+</select>
+
+</p>
+
+<p class="label">
+
+<span class="small-label">Area:</span>
+
+<select id="AreaPrecision">
+   <option value="1">1 sig fig</option>
+   <option value="2">2 sig figs</option>
+   <option value="3" selected="selected">3 sig figs</option>
+   <option value="4">4 sig figs</option>
+   <option value="5">5 sig figs</option>
+   <option value="6">6 sig figs</option>
+</select>
+
+</p>
+
+</div></div>
+
+
+
+	<!-- Input Constants -->
+
+
+
+<div class="smallset"><h3>Input Constants<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="settings-constantslink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label"><span class="small-label">SF:</span> <input class="short" type="tel" id="GlobalSF" value="" data-original-value="1" onblur="StrictCheck(this, 1, 1, 'decimal');"></p>
+<p class="label"><span class="small-label">Rot:</span> <input class="short" type="tel" id="GlobalAz" value="" data-original-value="0" onblur="StrictCheck(this, 0, 0, 'DMS');"></p>
+
+</div></div>
+
+
+
+	<!-- Units -->
+
+
+
+<div class="smallset"><h3>Units<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="settings-unitslink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label">
+
+<span class="small-label">Dist:</span>
+
+<select id="DistUnits" onchange="SyncDistArea('DistUnits')">
+   <option value="1" selected="selected">Metres (m)</option>
+   <option value="2">Feet (')</option>
+</select>
+
+</p>
+
+<p class="label">
+
+<span class="small-label">Disp?</span>
+
+<select id="DistUnitDisp">
+   <option value="0" selected="selected">No</option>
+   <option value="1">Yes</option>
+</select>
+
+</p>
+
+<p class="label">
+
+<span class="small-label">Area:</span>
+
+<select id="AreaUnits" onchange="SyncDistArea('AreaUnits')">
+   <option value="1" selected="selected">Hectare (Ha)</option>
+   <option value="2">Acre (acre)</option>
+</select>
+
+</p>
+
+<p class="label">
+
+<span class="small-label">Disp?</span>
+
+<select id="AreaUnitDisp">
+   <option value="0">No</option>
+   <option value="1" selected="selected">Yes</option>
+</select>
+
+</p>
+
+</div></div>
+
+
+
+	<!-- Tolerances -->
+
+
+
+<div class="smallset"><h3>Trav Tolerances<a href="javascript:void(0)" class="tt" title="Get help with this feature" id="settings-travtoleranceslink">&#160;</a></h3>
+
+<div class="inner-field">
+
+<p class="label">
+
+<span class="small-label">Prec:</span>
+
+<select id="TolPrec">
+   <option value="0">No Limit</option>
+   <option value="1000">1:1,000</option>
+   <option value="2500" selected="selected">1:2,500</option>
+   <option value="5000">1:5,000</option>
+   <option value="7500">1:7,500</option>
+   <option value="10000">1:10,000</option>
+   <option value="25000">1:25,000</option>
+   <option value="50000">1:50,000</option>
+   <option value="75000">1:75,000</option>
+   <option value="100000">1:100,000</option>
+   <option value="250000">1:250,000</option>
+</select>
+
+</p>
+
+<p class="label">
+
+<span class="small-label">Misc:</span>
+
+<select id="TolMisc">
+   <option value="10E10">No Limit</option>
+   <option value="0.500">0.500</option>
+   <option value="0.250" selected="selected">0.250</option>
+   <option value="0.100">0.100</option>
+   <option value="0.050">0.050</option>
+   <option value="0.025">0.025</option>
+   <option value="0.010">0.010</option>
+   <option value="0.005">0.005</option>
+</select>
+
+</p>
+
+<p class="label">
+
+<span class="small-label">Ang:</span>
+
+<select id="TolAngle">
+   <option value="10E10">No Limit</option>
+   <option value="0.0200">0°02'00"</option>
+   <option value="0.0100">0°01'00"</option>
+   <option value="0.0030" selected="selected">0°00'30"</option>
+   <option value="0.0020">0°00'20"</option>
+   <option value="0.0010">0°00'10"</option>
+   <option value="0.0005">0°00'05"</option>
+</select>
+
+</p>
+
+<p class="label">
+
+<span class="small-label">Info:</span>
+
+<select id="TolDetail">
+   <option value="1" selected="selected">Quick</option>
+   <option value="2">Detailed</option>
+</select>
+
+</p>
+
+</div></div>
+
+
+
+</div>
+
+
+
+	<!-- Sketch -->
+
+
+
+<div id="PointsEasel" class="sketch" tabindex="0">
+<div id="PointsCanvas" class="subsketch" ondblclick="ZoomSketch(0, 0, 0);"><svg id="SVGCanvas" class="SVGsketch" tabindex="0"></svg></div>
+<svg id="PointsControl" class="controlsketch" tabindex="0"></svg>
+<svg id="PointsButtons" class="buttonsketch" tabindex="0"></svg>
+</div>
+
+<div id="OptionsHolder" class="optionssketch">
+<p class="right">
+<a href="javascript:void(0)" class="de2" id="DeleteLink" title="Delete segments ( Ctrl+d )" onclick="ToolSwitch('DeleteLink')"></a>
+<a href="javascript:void(0)" class="arc" id="ArcLink" title="Draw arcs ( Ctrl+a )" onclick="ToolSwitch('ArcLink')"></a>
+<a href="javascript:void(0)" class="lin" id="LineLink" title="Draw lines ( Ctrl+l )" onclick="ToolSwitch('LineLink')"></a> | 
+<a href="javascript:void(0)" class="lab" id="LabelLink" title="Change point labeling [Point Name | Elevation | Description | None]" onclick="LabelSwap()">Point Name</a></p>
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+	<!-- Google Analytics tracking code, close html tags -->
+
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-4189114-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+</body>
+</html>

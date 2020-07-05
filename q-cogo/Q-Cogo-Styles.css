@@ -1,0 +1,974 @@
+/*
+	This heading must remain intact at all times.
+	Copyright (c) 2018 Mark Mason.
+
+	File:	Q-Cogo-Styles.css
+	Use:	To provide styling information for Q-Cogo, <http://www.q-cogo.com/>.
+	Ver:	1.5
+
+	Created by Mark Mason. Latest version available from <http://www.q-cogo.com/>.
+
+
+
+	This file is part of Q-Cogo.
+	
+	Q-Cogo is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	Q-Cogo is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with Q-Cogo.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
+
+/******************* APPLIES TO ALL *******************/
+
+
+
+@font-face {
+    font-family: FontAwesome;
+    src: url(fonts/font-awesome-4.4.0/fonts/fontawesome-webfont.woff);
+}
+
+div.debug {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+html {
+	font-size: 100%;
+} 
+
+body {
+	font-family: arial,sans-serif;
+	font-weight: 400;
+	color: black;
+	background-color: #eeeeee;
+	padding: 16px;
+	margin: 0;
+}
+
+p {
+	font-size: 13px;
+	line-height: 26px;
+	margin: 0;
+}
+
+a {
+	color: #000099;
+	text-decoration: none;
+}
+
+	a:hover {
+		text-decoration: underline;
+		color: #777;
+	}
+
+a.del, a.sel, a.sam, a.edt, a.add, a.clc, a.lab, a.lin, a.arc, a.de2 {
+	margin: 0 7px 0 7px;
+}
+	a.lin, a.arc, a.de2 {
+		margin: 0 1px 0 1px;
+		padding: 0 4px 0 4px;
+		border-radius: 3px;
+		display: inline-block;
+		height: 28px;
+		width: 20px;
+	}
+	.button-selected {
+		background-color: #99e6e0;
+		-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.6);
+		-moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.6);
+		box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.6);
+	}
+	a.lin svg, a.arc svg, a.de2 svg {
+		vertical-align: middle;
+	}
+	
+
+a.tt {
+	margin: 0 0 0 7px;
+	padding: 0 2px 0 2px;
+	text-decoration: none;
+}
+
+a.ts {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a.ss {
+	padding-left: 5px;
+	padding-right: 5px;
+	font-weight: bold;
+}
+	a.ss {
+		text-decoration: none;
+	}
+
+p.doc {
+	line-height: 16px;
+}
+
+span.b {
+	font-weight: bold;
+}
+
+span.i {
+	font-style: italic;
+}
+
+span.u {
+	text-decoration: underline;
+}
+
+ul {
+	margin-top: 3px;
+}
+
+div.highlight {
+	border: 8px solid #c80f0f;
+	padding: 10px;
+}
+
+div.hidden {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+}
+
+img {
+	border: 0;
+}
+
+
+
+/******************* TITLE BAR *******************/
+
+
+
+h1 {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+
+div.about-copy {
+	position: absolute;
+	width: 98%;
+	font-size: 11px;
+	text-align: right;
+	margin: 11px 0 0 0;
+	color: #bbb;
+	z-index: 110;
+}
+
+div.about-copy a, div.save-load a {
+	color: #9999a7;
+	padding: 2px;
+}
+	div.about-copy a:hover, div.save-load a:hover {
+		color: #777;
+	}
+	div.about-copy a:focus, div.save-load a:focus {
+		outline: 1px dotted #ddd;
+		outline: -webkit-focus-ring-color auto 5px;
+	}
+	#DownloadLink2, #AboutLink2 {
+		display: none;
+	}
+		
+div.save-load {
+	position: absolute;
+	left: 0px;
+	top: -2px;
+	font-size: 16px;
+	text-align: left;
+	padding-left: 25px;
+	word-spacing: 3px;
+}
+
+	.inputfile {
+		width: 0.1px;
+		height: 0.1px;
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		z-index: -1;
+	}
+	
+	input.filename {
+		color: #9999a7;
+		padding: 3px;
+		border: 0px;
+		outline: none;
+		background-color: transparent;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+		position: relative;
+		top: -3px;
+		width: 115px;
+	}
+
+	.inputfile + label {
+		cursor: pointer;
+		color: #9999a7;
+		padding: 2px;
+	}
+	
+	.inputfile + label:hover {
+		color: #777;
+	}
+	
+	.inputfile:focus + label, .inputfile.has-focus + label, input.filename:focus {
+		outline: 1px dotted #ddd;
+		outline: -webkit-focus-ring-color auto 5px;
+	}
+	
+		input.filename:focus {
+			background: rgba(150,150,150,0.35);
+			color:#bbb;
+		}
+		
+div.title-block {
+	display: block;
+	width: 100%;
+	height: 180px;
+}
+
+img.title {
+	max-width: 92px;
+	margin: 0 0 0 16px;
+	position: relative;
+	top: -7px;
+}
+
+
+
+/******************* LEFT SIDE MENU *******************/
+
+
+
+a.legend, a.legend-selected {
+	font-size: 14px;
+	display: block;
+	position: relative;
+	width: 85%;
+	max-width:165px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #eeeeee;
+	padding: 0 0 0 16px;
+	margin: 0 15% 0 0;
+}
+
+a.legend span, a.legend-selected span {
+	display: block;
+	padding: 4px;
+	border-bottom: 1px dotted #999;
+}
+
+	a.legend:hover span {
+		background-color: #c8e2e0;
+	}
+
+	a.legend:hover {
+		color: #000000;
+		text-decoration: none;
+	}
+		a.legend:hover::before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 7px;
+			left: 0px;
+			line-height: 0;
+			height: 0;
+			font-size: 0;
+			border-radius: 5px;
+			border: 5px solid #95a5a6;
+			background: #95a5a6;
+		}
+
+	a.legend-selected span {
+		background-color: #99e6e0;
+	}
+
+	a.legend-selected {
+		color: #000000;
+		text-decoration: none;
+	}
+		a.legend-selected::before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 7px;
+			left: 0px;
+			line-height: 0;
+			height: 0;
+			font-size: 0;
+			border-radius: 5px;
+			border: 5px solid #2980b9;
+			background: #2980b9;
+		}
+
+div.sidebar {
+	float: left;
+	width: 20%;
+}
+
+hr.spacer {
+	margin: 15px 0 15px 0;
+	*color: transparent;
+	background: transparent;
+}
+
+
+
+/******************* MAIN CONTENT HOLDERS *******************/
+
+
+
+div.center {
+	width: 100%;
+	max-width: 1000px;
+	height: 585px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.main {
+	float: left;
+	width: 80%;
+	position: relative;
+}
+
+h2 {
+	font-size: 24px;
+	line-height: 24px;
+	margin: 0;
+	text-align: center;
+	color: #f0f0ff;
+}
+
+div.header-bar, div.holder {
+	float: left;
+	display: inline;
+	width: 100%;
+	position: absolute;
+}
+
+div.header-bar {
+	background: url('images/header.gif') repeat;
+	padding:4px 0 4px 0;
+	border-radius: 4px;
+}
+
+div.holder {
+	margin-top: 50px;
+/*	height: 655px;*/
+	z-index: 2;
+	display: none;
+}
+
+
+
+/******************* SUB CONTENT HOLDERS *******************/
+
+
+
+div.set {
+	display: inline;
+	float: left;
+	padding:0 1% 0 1%;
+	width: 98%;
+}
+
+div.subset {
+	display: inline;
+	float: left;
+	padding: 0 1% 0 1%;
+	width: 32%;
+	margin-top: 4px;
+}
+
+div.smallset {
+	display: inline;
+	float: left;
+	padding: 0 1% 0 1%;
+	width: 23%;
+	height: 160px;
+	margin: 0;
+}
+
+div.fullset {
+	display: inline;
+	float: left;
+	padding: 0 1% 0 1%;
+	width: 98%;
+	height: 492px;
+}
+
+h3 {
+	color: #000000;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 18px;
+	margin: 0;
+	margin-bottom: 8px;
+	width: 100%;
+}
+
+div.inner-field {
+	float: left;
+	display: inline;
+	width: 100%;
+	max-width: 220px;
+}
+
+
+
+/******************* INPUTS LABELS AND SKETCH *******************/
+
+
+
+p.right {
+	text-align: right;
+	display: block;
+	width: 100%;
+}
+
+p.label {
+	float: left;
+	width: 100%;
+}
+
+span.small-label, span.small-label-hidden {
+	width: 33%;
+	float: left;
+	clear: none;
+}
+	span.small-label-hidden {
+		display: none;
+	}
+
+	input {
+	font-size: 13px;
+	font-family: monospace;
+	border: 0;
+	margin: 0;
+	background: #fff;
+	border-radius: 2px;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+.points {
+	 word-spacing: -6px;
+}
+
+input.short, input.short-hidden {
+	width: 63%;
+	padding: 2px 2% 2px 2%;
+}
+	input.short-hidden {
+		display: none;
+	}
+
+select {
+	font-size: 13px;
+	font-family: monospace;
+	border: 0;
+	margin: 0;
+	width: 63%;
+	padding: 1px 2% 1px 2%;
+	background: #fff;
+	border-radius: 2px;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+textarea.large {
+	width: 98%;
+	padding:0 1% 0 1%;
+	height: 190px;
+	overflow: auto;
+	font-size: 13px;
+	font-family: monospace;
+	border: 0;
+	margin: 0;
+	background: #fff;
+	border-radius: 2px;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+hr {
+	color: #999;
+	background: #999;
+	height: 1px;
+	border:0;
+}
+
+div.sketch {
+	position: absolute;
+	width: 64%;
+	height: 290px;
+	margin: 316px 1% 40px 35%;
+	overflow: hidden;
+	background: #fff;
+	border-radius: 2px;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	z-index: 11;
+}
+
+div.subsketch {
+	width: 384px;
+	height: 224px;
+	cursor: crosshair;
+}
+
+svg.SVGsketch {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+svg.controlsketch, svg.buttonsketch {
+	background: rgba(255,255,255,0.85);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 70px;
+	height: 205px;
+	cursor: default;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+svg.buttonsketch {
+	height: 170px;
+	cursor: pointer;
+	background: transparent;
+}
+
+div.optionssketch {
+	position: absolute;
+	width: 48%;
+	margin: 611px 1% 0 50%;
+	z-index: 11;
+}
+
+div.infosketch {
+	background: #d8f2f0;
+	color: #4444cc;
+	opacity: 0.9;
+	padding: 4px 9px 4px 9px;
+	font-size: 14px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.sketch, .subsketch, .controlsketch, .buttonsketch {
+	outline-style: none;
+}
+
+
+
+/******************* HELP AREA *******************/
+
+
+
+div.help-scroll {
+	font-family: verdana, sans-serif;
+	font-size: 12px;
+	padding: 1%;
+	margin: 0 2% 0 0;
+	height: 450px;
+	width: 71%;
+	overflow: auto;
+	float: left;
+	border-radius: 2px;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.8);
+	background-color: #fff;
+}
+
+div.help-scroll a {
+	text-decoration: underline;
+}
+
+div.help-index {
+	font-size: 13px;
+	float: left;
+	height: 450px;
+	width: 23%;
+	padding: 0 1% 0 1%;
+}
+
+div.tall-spacer {
+	display: block;
+	width: 60px;
+	height: 36px;
+}
+
+span.par-label, span.Lpar-label {
+	width: 50px;
+	float: left;
+	margin-left: 20px;
+}
+
+span.Lpar-label {
+	width: 75px;
+}
+
+
+
+/******************* TOOLTIP AND SUGGEST *******************/
+
+
+
+div.tooltip {
+	font-weight: 500;
+	line-height: 15px;
+	display: block;
+	overflow: hidden;
+}
+
+h4 {
+	font-family: arial, sans-serif;
+	margin: 0 0 14px 0;
+	padding: 0 0 0 10px;
+	font-size: 14px;
+	color: #f0f0ff;
+	background-color: #666;
+	line-height: 24px;
+}
+
+h5 {
+	font-family: arial, sans-serif;
+	margin: 24px 0 7px 0;
+	padding: 0 0 0 10px;
+	font-size: 14px;
+	background-color: #ddd;
+	color: #444;
+	line-height: 24px;
+}
+
+div.sugg-div {
+	font-size: 12px;
+	line-height: 14px;
+	position: fixed;
+	background: #f0f0ff;
+ 	padding: 2px;
+ 	cursor: pointer;
+	visibility: hidden;
+	border: 2px solid #999;
+	border-radius: 2px;
+	text-indent: 5px;
+	line-height: 15px;
+	width: 90px;
+	font-family: monospace;
+}
+	.suggOver {
+ 		background: #9900CC;
+		color: #ffffff;
+	}
+	
+
+	
+/******************* SCREEN WIDTH BREAKPOINTS *******************/
+
+
+
+/* Settings areas rearrange */
+
+@media screen and (max-width:950px) {
+
+	div.smallset {
+		width: 31%;
+	}
+
+}
+
+/* Left menu moves to top */
+/* Settings areas rearrange again */
+
+@media screen and (max-width:850px) {
+
+	div.sidebar, div.main {
+		width: 100%;
+	}
+	
+	div.menu-holder {
+		margin: 10px 0 0 0;
+	}
+	
+	div.title-block {
+		float: left;
+		width: 18%;
+	}
+	
+	a.legend, a.legend-selected {
+		width: 12%;
+		min-width: 80px;
+		padding: 0;
+		margin: 3px 4px;
+		float: left;
+		text-align: center;
+	}
+	
+	a.legend span, a.legend-selected span {
+		border-radius: 4px;
+		padding: 4px 7px;
+	}
+	
+	a.legend:hover::before, a.legend-selected::before {
+		border:0;
+	}
+	
+	a.legend span, a.legend-selected span {
+		border: 0;
+	}
+	
+	a.legend span {	
+		background: #e6e6e6;
+	}
+	
+	a.legend:hover span {	
+		background: #ccc;
+	}
+	
+	hr.spacer {
+		float: left;
+		color: transparent;
+		background: transparent;
+		height: 0px;
+		border-bottom: 3px dotted #ccc;
+		width: 80%;
+	}
+	
+	div.smallset {
+		width: 23%;
+	}
+	
+}
+
+/* Settings areas rearrange again */
+
+@media screen and (max-width:800px) {
+
+	div.smallset {
+		width: 31%;
+	}
+
+}
+
+/* Top menu contracts further */
+/* Copyright info rearranges */
+/* Sketch moves below inputs */
+
+@media screen and (max-width:700px) {
+
+	body {
+		padding: 7px;
+	}
+
+	div.title-block {
+		width: 20%;
+		height: 195px;
+		margin: 0 4% 0 0;
+	}
+	
+	div.menu-holder {
+		margin: 0;
+	}
+	
+	img.title {
+		width: 100%;
+		margin: 0;
+		top: 0;
+	}
+	
+	a.legend, a.legend-selected {
+		width: 22%;
+		min-width: 80px;
+		padding: 0;
+		margin: 3px 4px;
+		text-align: center;
+	}
+	
+	hr.spacer {
+		width: 70%;
+	}
+	
+	div.about-copy {
+		text-align: right;
+		margin: 0;
+		width: 99%;
+		color: #333;
+		top: -20px;
+	}
+	
+	div.save-load {
+		padding-left: 5px;
+	}
+	
+	div.header-bar {
+		display: block; /* Stops FF from pushing header bar to the right */
+	}
+	
+	div.sketch {
+		width: 98%;
+		margin: 20px 1% 5px 1%;
+		position: relative;
+		float: left;
+	}
+	
+	div.subset {
+		width: 50%;
+		margin-left: 25%;
+		margin-right: 25%;
+		margin-top: 15px;
+	}
+	
+	div.holder {
+		position: static;
+	}
+	
+	div.optionssketch {
+		position: static;
+		width: 98%;
+		margin: 0 1% 40px 1%;
+		margin-bottom: 20px;
+	}
+	
+	textarea.large {
+		overflow:scroll;
+	}
+	
+	input.filename:focus {
+		color: #555;
+	}
+
+}
+
+/* Settings areas rearrange again */
+/* Copyright info contracts */
+
+@media screen and (max-width:500px) {
+
+	div.smallset {
+		width: 48%;
+	}
+	
+	#DownloadLink1, #AboutLink1 {
+		display: none;
+	}
+	
+	#DownloadLink2, #AboutLink2 {
+		display: inline;
+	}
+	
+	input.filename {
+		width: 85px;
+	}
+
+}
+
+/* Top menu contracts further */
+/* Prompts narrow */
+
+@media screen and (max-width:425px) {
+
+	div.title-block {
+		width: 25%;
+		height: 200px;
+		margin: 0 5% 0 0;
+	}
+	
+	a.legend, a.legend-selected {
+		width: 30%;
+		min-width: 0;
+		font-size: 13px;
+	}
+	
+	hr.spacer {
+		width: 65%;
+		margin: 5px 0;
+	}
+	
+	div.jqi .jqimessage {
+		padding: 0 0 15px 0;
+		background: transparent;
+	}
+	
+	div.subset {
+		width: 70%;
+		margin-left: 15%;
+		margin-right: 15%;
+	}
+	
+}
+
+
+
+/******************* SCREEN HEIGHT BREAKPOINTS *******************/
+
+
+
+/* Default prompt settings on large screens */
+
+@media screen and (max-height:150000px) {
+
+	div.jqi div.tooltip {
+		max-height: 350px;
+		min-height: 35px;
+		margin: 10px 0 35px 0;
+		overflow: auto;
+	}
+
+}
+
+/* Prompts shorten */
+
+@media screen and (max-height:650px) {
+
+	div.jqi div.tooltip {
+		max-height: 250px;
+		margin: 10px 0 10px 0;
+	}
+
+}
+
+/* Prompts shorten further */
+
+@media screen and (max-height:375px) {
+
+	div.jqi div.tooltip {
+		max-height: 150px;
+	}
+
+}

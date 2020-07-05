@@ -1,0 +1,17 @@
+[1007/213319.334:ERROR:process_info.cc(632)] range at 0x8dcc321600000000, size 0x198 fully unreadable
+[1007/213319.334:ERROR:process_info.cc(632)] range at 0x8dcc327c00000000, size 0x198 fully unreadable
+[1007/213319.334:ERROR:process_info.cc(632)] range at 0x0, size 0x198 fully unreadable
+[1007/213319.622:ERROR:process_reader_win.cc(242)] ReadMemory at 0x7ffc4e680000 of 64 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[1007/213319.622:WARNING:pe_image_reader.cc(281)] could not read dos header from C:\Program Files\AVAST Software\Avast\snxhk64.dll
+[1007/213319.622:ERROR:process_reader_win.cc(242)] ReadMemory at 0x7ffc4e620000 of 64 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[1007/213319.622:WARNING:pe_image_reader.cc(281)] could not read dos header from C:\WINDOWS\AppPatch\AppPatch64\AcGenral.dll
+[1007/213319.622:ERROR:process_reader_win.cc(242)] ReadMemory at 0x7ffc4e580000 of 64 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[1007/213319.622:WARNING:pe_image_reader.cc(281)] could not read dos header from C:\Program Files (x86)\Google\Chrome\Application\61.0.3163.100\chrome_elf.dll
+[1007/213319.622:ERROR:process_reader_win.cc(242)] ReadMemory at 0x7ffc3bc30000 of 64 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[1007/213319.622:WARNING:pe_image_reader.cc(281)] could not read dos header from C:\Program Files (x86)\Google\Chrome\Application\61.0.3163.100\chrome_child.dll
+[1007/213319.622:ERROR:process_reader_win.cc(242)] ReadMemory at 0x7ffc4e540000 of 64 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[1007/213319.622:WARNING:pe_image_reader.cc(281)] could not read dos header from C:\Program Files\AVAST Software\Avast\x64\aswJsFlt.dll
+[1007/213319.622:ERROR:process_reader_win.cc(242)] ReadMemory at 0x3854fee000 of 73728 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[1007/213319.622:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[1007/213319.622:ERROR:scoped_process_suspend.cc(39)] NtResumeProcess: An attempt was made to access an exiting process.  (0xc000010a)
+[1222/223319.781:ERROR:crash_report_database_win.cc(427)] unexpected header

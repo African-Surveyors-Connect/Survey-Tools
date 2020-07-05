@@ -1,0 +1,109 @@
+.jqifade {
+	position: absolute;
+	background-color: #aaa;
+}
+
+div.jqi {
+	width: 93%;
+	max-width: 560px;
+	font-family: verdana, geneva, arial, helvetica, sans-serif;
+	position: absolute;
+	background-color: #ffffff;
+	font-size: 13px;
+	text-align: left;
+	padding: 7px;
+	height: 0;
+	overflow: hidden;
+	border: 2px solid #666;
+	border-top: 28px solid #666;
+	border-radius: 4px;
+}
+
+div.jqi  h4 {
+	position: absolute;
+	left: 0;
+	top: -25px;
+	padding: 0 0 0 18px;
+	font-size: 15px;
+	background: transparent;
+}
+
+div.jqi  a {
+	text-decoration: underline;
+}
+
+div.jqi .jqicontainer {
+	font-weight: bold;
+}
+
+div.jqi .jqiclose {
+	font-family: arial, sans-serif;
+	position: absolute;
+	top: -24px; right: 4px;
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+	color: #f0f0ff;
+	text-align: center;
+	font-size: 20px;
+	z-index: 12;
+}
+
+div.jqi .jqimessage {
+	padding: 0 8px 15px 60px;
+	margin-top: 8px;
+	margin-left: 8px;
+	line-height: 16px;
+	color: #444444;
+}
+
+	div.helpmessage {
+		background: url('images/Help_Circle_Blue.png') no-repeat top left;
+		background-size: 48px 48px;
+	}
+	
+	div.infomessage {
+		background: url('images/Info_Box_Blue.png') no-repeat top left;
+		background-size: 48px 48px;
+	}
+	
+	div.errormessage {
+		background: url('images/Warning.png') no-repeat top left;
+		background-size: 48px 48px;
+	}
+	
+	div.editmessage {
+		background: url('images/DrawingPin1_Blue.png') no-repeat top left;
+		background-size: 48px 48px;
+	}
+
+div.jqi input {
+	border: 1px solid #999;
+	padding: 3px 2% 3px 2%;
+	-webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.8);
+	-moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.8);
+	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.8);
+	border-radius: 3px;
+}
+	
+div.jqi .jqibuttons {
+	text-align: right;
+	padding: 5px 0 5px 0;
+	border: solid 1px #ddd;
+	background-color: #f4f4f4;
+	border-radius: 2px;
+}
+
+div.jqi button {
+	padding: 4px 13px;
+	margin: 0 8px;
+}
+
+div.jqi button:hover {
+}
+
+div.jqi button.jqidefaultbutton {
+}
+
+.jqiwarning .jqi .jqibuttons {
+}
