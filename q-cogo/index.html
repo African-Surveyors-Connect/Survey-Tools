@@ -1,44 +1,38 @@
 <!DOCTYPE html>
-
-
-
 <!--
 	This heading must remain intact at all times.
 	Copyright (c) 2018 Mark Mason.
 
 	File:	index.html
-	Use:	To provide the html interface for Q-Cogo, <http://www.q-cogo.com/>.
+	Use:	To provide the html interface for Cogo, <http://www.q-cogo.com/>.
 	Ver:	1.5
 
 	Created by Mark Mason. Latest version available from <http://www.q-cogo.com/>.
 
 
 
-	This file is part of Q-Cogo.
+	This file is part of Cogo.
 	
-	Q-Cogo is free software: you can redistribute it and/or modify
+	Cogo is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 3 of the License, or
 	(at your option) any later version.
 	
-	Q-Cogo is distributed in the hope that it will be useful,
+	Cogo is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
 	
 	You should have received a copy of the GNU General Public License
-	along with Q-Cogo.  If not, see <http://www.gnu.org/licenses/>.
+	along with Cogo.  If not, see <http://www.gnu.org/licenses/>.
 -->
-
-
-
 <html lang="en">
 
 <head>
 
 
 
-	<!-- The following code redirects MS IE6 (or lesser) users to a page explaining why Q-Cogo does not support IE6 -->
+	<!-- The following code redirects MS IE6 (or lesser) users to a page explaining why Cogo does not support IE6 -->
 
 
 
@@ -56,21 +50,21 @@
 
 
 <meta charset="utf-8">
-<title>Q-Cogo: Online Land Surveyor's Calculator</title>
+<title>Cogo:  Online Land Surveyor's Calculator</title>
 <meta name="Description" content="Free online calculation and COGO tool for land surveyors">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<meta property="og:title" content="Q-Cogo">
+		<meta property="og:title" content="Cogo">
 		<meta property="og:description" content="Free, accessible tool for solving land surveying computations. Perfect for students, established professionals, and engineers.">
-		<meta property="og:image" content="http://q-cogo.com/images/q-cogo-Logo-card.gif">
-		<meta property="og:url" content="http://q-cogo.com/">
+		<meta property="og:image" content="https://www.africansurveyors.co.zw/wp-content/uploads/2020/06/African-surveyors.png">
+		<meta property="og:url" content="https://www.africansurveyors.co.zw">
 		<meta name="twitter:card" content="summary">
-		<meta property="og:site_name" content="Q-Cogo: Online Land Surveyor's Calculator">
+		<meta property="og:site_name" content="Cogo: Online Land Surveyor's Calculator">
 		<meta name="twitter:image:alt" content="Quick and intuitive calculator for land surveyors and survey students">
 		
-		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://www.africansurveyors.co.zw/wp-content/uploads/2020/06/African-surveyors.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="https://www.africansurveyors.co.zw/wp-content/uploads/2020/06/African-surveyors.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://www.africansurveyors.co.zw/wp-content/uploads/2020/06/African-surveyors.png">
 		<link rel="manifest" href="manifest.json">
 		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
 		<meta name="theme-color" content="#666666">
@@ -102,7 +96,7 @@
 
 		<script src="hammer.min.js"></script>
 
-	<!-- The following libraries form the core functionality of Q-Cogo -->
+	<!-- The following libraries form the core functionality of Cogo -->
 
 		<script type="text/javascript" src="Q-Cogo-Adjust.js"></script>
 		<script type="text/javascript" src="Q-Cogo-Cogo.js"></script>
@@ -148,20 +142,14 @@
 <input type="text" id="SolverCanvasSt" value="" readonly="readonly">
 
 </div>
-
-
-
 	<!-- Left navigation bar and top floating links -->
-
-
-
 <div class="center">
 
 <div class="sidebar">
 
 	<div class="title-block">
 
-<h1><a class="image" href="http://q-cogo.com"><img class="title" src="images/q-cogo-Logo.gif" alt="Q-Cogo" title="Q-Cogo"></a></h1>
+<h1><a class="image" href="https://www.africansurveyors.co.zw/"><img class="title" src="https://www.africansurveyors.co.zw/wp-content/uploads/2020/06/African-surveyors.png" alt="Cogo Survey" title="Cogo"></a></h1>
 
 	</div>
 	
@@ -178,8 +166,8 @@
 
 <a href="javascript:void(0)" class="legend legend-last" id="area-tab" title="Perform area calculations ( a )" onclick="MoveFront('area'); PanSketch(0, 0);"><span>Area</span></a>
 <a href="javascript:void(0)" class="legend" id="solver-tab" title="Solve triangles and curves ( l )" onclick="MoveFront('solver'); PanSketch(0, 0);"><span>Solver</span></a>
-<a href="javascript:void(0)" class="legend" id="settings-tab" title="Change Q-Cogo settings ( s )" onclick="MoveFront('settings')"><span>Settings</span></a>
-<a href="javascript:void(0)" class="legend legend-last" id="help-tab" title="Get help with all aspects of Q-Cogo ( h )" onclick="MoveFront('help')"><span>Help</span></a>
+<a href="javascript:void(0)" class="legend" id="settings-tab" title="Change Cogo settings ( s )" onclick="MoveFront('settings')"><span>Settings</span></a>
+<a href="javascript:void(0)" class="legend legend-last" id="help-tab" title="Get help with all aspects of Cogo ( h )" onclick="MoveFront('help')"><span>Help</span></a>
 
 	</div>
 
@@ -203,11 +191,11 @@
 		<input class="filename" id="filename" onblur="CheckFileName();" value="">
 	</div>
 
-	<a href="javascript:void(0)" id="CopyrightLink" title="Copyright and terms of Q-Cogo">&copy; Mark Mason</a> | 
-	<a href="javascript:void(0)" id="AboutLink1" title="About Q-Cogo">About</a>
-	<a href="javascript:void(0)" id="AboutLink2" title="About Q-Cogo"><i class="fa fa-info-circle fa-lg"></i></a> | 
-	<a href="javascript:void(0)" id="DownloadLink1" title="How to download Q-Cogo">Download</a>
-	<a href="javascript:void(0)" id="DownloadLink2" title="How to download Q-Cogo"><i class="fa fa-download fa-lg"></i></a>
+	<a href="javascript:void(0)" id="CopyrightLink" title="Copyright and terms of Cogo">&copy; Mark Mason</a> | 
+	<a href="javascript:void(0)" id="AboutLink1" title="About Cogo">About</a>
+	<a href="javascript:void(0)" id="AboutLink2" title="About Cogo"><i class="fa fa-info-circle fa-lg"></i></a> | 
+	<a href="javascript:void(0)" id="DownloadLink1" title="How to download Cogo">Download</a>
+	<a href="javascript:void(0)" id="DownloadLink2" title="How to download Cogo"><i class="fa fa-download fa-lg"></i></a>
 
 </div>
 
@@ -279,13 +267,13 @@
 
 <h4>ABOUT</h4>
 
-Welcome to Q-Cogo! Q-Cogo was developed as a free, accessible way of solving land survey computations. <br><br>
+Welcome to Cogo! Cogo was developed as a free, accessible way of solving land survey computations. <br><br>
 
-Anyone can use Q-Cogo. It is aimed at land surveying and geomatics engineering students, and others wanting to do surveying computations without expensive coordinate geometry software. Q-Cogo is web-based and does not require installation. <br><br>
+Anyone can use Cogo. It is aimed at land surveying and geomatics engineering students, and others wanting to do surveying computations without expensive coordinate geometry software. Cogo is web-based and does not require installation. <br><br>
 
-Q-Cogo is easy to use, and provides the practiced user with a faster way of performing calculations. For now, it is exclusively a calculator, but future versions may be capable of producing survey drawings. <br><br>
+Cogo is easy to use, and provides the practiced user with a faster way of performing calculations. For now, it is exclusively a calculator, but future versions may be capable of producing survey drawings. <br><br>
 
-For more information, contact us: NOTANADDRESS.
+For more information, contact us: <a href="mailto:<a href="mailto:admin@africansurveyors.co.zw">admin@africansurveyors.co.zw</a>
 
 </div></div>
 
@@ -297,11 +285,11 @@ For more information, contact us: NOTANADDRESS.
 
 Copyright &copy; 2018 Mark R. Mason, BCLS. <br><br>
 
-Q-Cogo is free software: you can redistribute it and/or modify it under the terms of the <a href="http://www.gnu.org/licenses/gpl-3.0.html" title="GNU General Public License" onclick="return Win('http://www.gnu.org/licenses/gpl-3.0.html');">GNU General Public License</a> as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. <br><br>
+Cogo is free software: you can redistribute it and/or modify it under the terms of the <a href="http://www.gnu.org/licenses/gpl-3.0.html" title="GNU General Public License" onclick="return Win('http://www.gnu.org/licenses/gpl-3.0.html');">GNU General Public License</a> as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. <br><br>
 
-Q-Cogo is distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantability or fitness for a particular purpose. See the <a href="http://www.gnu.org/licenses/gpl-3.0.html" title="GNU General Public License" onclick="return Win('http://www.gnu.org/licenses/gpl-3.0.html');">GNU General Public License</a> for more details. <br><br>
+Cogo is distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantability or fitness for a particular purpose. See the <a href="http://www.gnu.org/licenses/gpl-3.0.html" title="GNU General Public License" onclick="return Win('http://www.gnu.org/licenses/gpl-3.0.html');">GNU General Public License</a> for more details. <br><br>
 
-For more information, contact us: NOTANADDRESS.
+For more information, contact us: <a href="mailto:admin@africansurveyors.co.zw">admin@africansurveyors.co.zw</a>.
 
 </div></div>
 
@@ -311,9 +299,9 @@ For more information, contact us: NOTANADDRESS.
 
 <h4>VERSIONS</h4>
 
-Each older version of Q-Cogo will remain available here. Future versions of Q-Cogo will be able to open all data produced by earlier versions.
+Each older version of Cogo will remain available here. Future versions of Cogo will be able to open all data produced by earlier versions.
 
-<h5><a href="http://q-cogo.com/archive-v1-5" title="Q-Cogo v. 1.5" onclick="return Win('http://q-cogo.com/archive-v1-5');"><span class="u b">Q-Cogo v. 1.5 &ndash; Apr 10, 2018</span></a></h5>
+<h5><a href="http://q-cogo.com/archive-v1-5" title="Cogo v. 1.5" onclick="return Win('http://q-cogo.com/archive-v1-5');"><span class="u b">Cogo v. 1.5 &ndash; Apr 10, 2018</span></a></h5>
 
 <span class="i u">Overview:</span>
 <ul>
@@ -336,7 +324,7 @@ Each older version of Q-Cogo will remain available here. Future versions of Q-Co
 	<li>Sketches behave erratically in some browsers when using a touch screen with a desktop computer</li>
 </ul>
 
-<h5><a href="http://q-cogo.com/archive-v1-4" title="Q-Cogo v. 1.4" onclick="return Win('http://q-cogo.com/archive-v1-4');"><span class="u b">Q-Cogo v. 1.4 &ndash; Nov 1, 2017</span></a></h5>
+<h5><a href="http://q-cogo.com/archive-v1-4" title="Cogo v. 1.4" onclick="return Win('http://q-cogo.com/archive-v1-4');"><span class="u b">Cogo v. 1.4 &ndash; Nov 1, 2017</span></a></h5>
 
 <span class="i u">Overview:</span>
 <ul>
@@ -355,7 +343,7 @@ Each older version of Q-Cogo will remain available here. Future versions of Q-Co
 	<li>Compass rule adjustments must be performed by two fixed points, not by 1 fixed point and a fixed azimuth</li>
 </ul>
 
-<h5><a href="http://q-cogo.com/archive-v1-3" title="Q-Cogo v. 1.3" onclick="return Win('http://q-cogo.com/archive-v1-3');"><span class="u b">Q-Cogo v. 1.3 &ndash; Sept 1, 2017</span></a></h5>
+<h5><a href="http://q-cogo.com/archive-v1-3" title="Cogo v. 1.3" onclick="return Win('http://q-cogo.com/archive-v1-3');"><span class="u b">Cogo v. 1.3 &ndash; Sept 1, 2017</span></a></h5>
 
 <span class="i u">Overview:</span>
 <ul>
@@ -379,7 +367,7 @@ Each older version of Q-Cogo will remain available here. Future versions of Q-Co
 	<li>Internet Explorer versions 11 and below struggle to render SVG graphics</li>
 </ul>
 
-<h5><a href="http://q-cogo.com/archive-v1-2" title="Q-Cogo v. 1.2 (Beta)" onclick="return Win('http://q-cogo.com/archive-v1-2');"><span class="u b">Q-Cogo v. 1.2 (Beta) &ndash; Jan 1, 2010</span></a></h5>
+<h5><a href="http://q-cogo.com/archive-v1-2" title="Cogo v. 1.2 (Beta)" onclick="return Win('http://q-cogo.com/archive-v1-2');"><span class="u b">Cogo v. 1.2 (Beta) &ndash; Jan 1, 2010</span></a></h5>
 
 <span class="i u">Overview:</span>
 <ul>
@@ -399,7 +387,7 @@ Each older version of Q-Cogo will remain available here. Future versions of Q-Co
 	<li>Meaningless "Charcode" JavaScript warning produced in some versions of Firefox</li>
 </ul>
 
-<h5><a href="http://q-cogo.com/archive-v1-1" title="Q-Cogo v. 1.1 (Beta)" onclick="return Win('http://q-cogo.com/archive-v1-1');"><span class="u b">Q-Cogo v. 1.1 (Beta) &ndash; Sept 1, 2009</span></a></h5>
+<h5><a href="http://q-cogo.com/archive-v1-1" title="Cogo v. 1.1 (Beta)" onclick="return Win('http://q-cogo.com/archive-v1-1');"><span class="u b">Cogo v. 1.1 (Beta) &ndash; Sept 1, 2009</span></a></h5>
 
 <span class="i u">Overview:</span>
 <ul>
@@ -418,7 +406,7 @@ Each older version of Q-Cogo will remain available here. Future versions of Q-Co
 
 <h5>Future Versions</h5>
 
-Future versions of Q-Cogo MAY include: cloud storage and account features, least squares adjustments, Helmert's transformation, automatic error propagation, sketch image outputting and DXF export, more complex linework, labelling and point-and-click drafting facilities, clothoid and roading calculations, map projections, heighting, and pro-rata operations.
+Future versions of Cogo MAY include: cloud storage and account features, least squares adjustments, Helmert's transformation, automatic error propagation, sketch image outputting and DXF export, more complex linework, labelling and point-and-click drafting facilities, clothoid and roading calculations, map projections, heighting, and pro-rata operations.
 
 </div></div>
 
@@ -428,13 +416,13 @@ Future versions of Q-Cogo MAY include: cloud storage and account features, least
 
 <h4>DOWNLOAD</h4>
 
-Q-Cogo can be downloaded to your computer and used when you're not connected to the internet. <br><br>
+Cogo can be downloaded to your computer and used when you're not connected to the internet. <br><br>
 
-<a href="q-cogo.zip" title="Download Q-Cogo" onclick="return Win('q-cogo.zip');">Download</a> the zipped folder and unzip it. The folder contains the current source code (HTML, CSS, and JavaScript), for reference and improvement. To run Q-Cogo, open "index.html" in an Internet browser. <br><br>
+<a href="q-cogo.zip" title="Download Cogo" onclick="return Win('q-cogo.zip');">Download</a> the zipped folder and unzip it. The folder contains the current source code (HTML, CSS, and JavaScript), for reference and improvement. To run Cogo, open "index.html" in an Internet browser. <br><br>
 
-Do not choose "Save Page As ..." in your browser. This method of saving Q-Cogo is unreliable, and may produce a large variety of errors. <br><br>
+Do not choose "Save Page As ..." in your browser. This method of saving Cogo is unreliable, and may produce a large variety of errors. <br><br>
 
-On some mobile devices, adding Q-Cogo to your home screen will allow you to access Q-Cogo like an app instead of a web page.
+On some mobile devices, adding Cogo to your home screen will allow you to access Cogo like an app instead of a web page.
 
 </div></div>
 
@@ -444,13 +432,13 @@ On some mobile devices, adding Q-Cogo to your home screen will allow you to acce
 
 <h4>USING Q-COGO</h4>
 
-You can start entering data and performing calculations as soon as Q-Cogo loads. If you don't need to save your work, just exit the browser window when you're finished. Leaving Q-Cogo or refreshing the page will erase any unsaved data.
+You can start entering data and performing calculations as soon as Cogo loads. If you don't need to save your work, just exit the browser window when you're finished. Leaving Cogo or refreshing the page will erase any unsaved data.
 
 <h5>Saving Your Work</h5>
 
 If you want to save your work (points, lines, settings and records) to your computer, first name your job at the left side of the title bar. Next, click the <i class="fa fa-lg fa-floppy-o"></i> icon to save to your local machine. Control over the default save location is managed through your browser. <br><br>
 
-Open saved jobs by clicking on the <i class="fa fa-lg fa-folder-open-o"></i> icon. Q-Cogo files have a ".qcg" file extension and can only be used by Q-Cogo. <br><br>
+Open saved jobs by clicking on the <i class="fa fa-lg fa-folder-open-o"></i> icon. Cogo files have a ".qcg" file extension and can only be used by Cogo. <br><br>
 
 You can import comma-separated or space-separated points files by choosing "Edit", then pasting the contents of your text file into the points record. Export space-separated points by choosing "Select", then copying the record into a text file. <br><br>
 
@@ -458,9 +446,9 @@ You can copy and paste the contents of any output record into a text file to ref
 
 <h5>Navigation and Data Entry</h5>
 
-Each area in Q-Cogo includes pop-up help topics. Click on the nearest <i class="fa fa-lg fa-question-circle"></i> icon to learn more.<br><br>
+Each area in Cogo includes pop-up help topics. Click on the nearest <i class="fa fa-lg fa-question-circle"></i> icon to learn more.<br><br>
 
-Q-Cogo will automatically sketch points, lines, and all COGO operations. Sketches automatically zoom to the most relevant area, but you can zoom or pan manually for a better view. Arcs and lines can be drawn at any time to provide context. <br><br>
+Cogo will automatically sketch points, lines, and all COGO operations. Sketches automatically zoom to the most relevant area, but you can zoom or pan manually for a better view. Arcs and lines can be drawn at any time to provide context. <br><br>
 
 Azimuths and angles must be entered in DMS, of the form DDD.MMSSSS... or DDD°MM'SS.SS..." (seconds decimals allowed). Quadrantal bearings can be entered by indicating the quadrant, for example "SW" followed by the bearing. Entering (or clicking) two points separated by two dots ('Pt1..Pt2') will retrieve the distance or azimuth inverse between those points. Simple mathematical expressions are allowed. Data can be entered by clicking on sketch points. <br><br>
 
@@ -468,9 +456,9 @@ Point names and descriptions may be up to 8 characters. Any spaces will be repla
 
 For faster input, move between data fields by pressing 'Tab'. <br><br>
 
-All Q-Cogo operations have been extensively checked; however, the possibility of error (especially with erroneous input) still exists. Be sure that results make sense, and double-check important work. <br><br>
+All Cogo operations have been extensively checked; however, the possibility of error (especially with erroneous input) still exists. Be sure that results make sense, and double-check important work. <br><br>
 
-Please report bugs in detail: NOTANADDRESS.
+Please report bugs in detail: <a href="mailto:admin@africansurveyors.co.zw">admin@africansurveyors.co.zw</a>.
 
 </div></div>
 
@@ -480,25 +468,25 @@ Please report bugs in detail: NOTANADDRESS.
 
 <h4>PERFORMANCE</h4>
 
-Q-Cogo was designed to be used in all modern browsers, but performance will vary depending on your choice of web browser and the capabilities of your computer. Q-Cogo uses JavaScript for most functions: to use Q-Cogo, you MUST enable JavaScript in your browser.
+Cogo was designed to be used in all modern browsers, but performance will vary depending on your choice of web browser and the capabilities of your computer. Cogo uses JavaScript for most functions: to use Cogo, you MUST enable JavaScript in your browser.
 
 <h5>Sketches</h5>
 
-Q-Cogo uses Scalable Vector Graphics (SVG) to sketch calculations. If you can't see sketches being generated automatically while you work, update your browser or switch to a browser that supports SVG.<br><br>
+Cogo uses Scalable Vector Graphics (SVG) to sketch calculations. If you can't see sketches being generated automatically while you work, update your browser or switch to a browser that supports SVG.<br><br>
 
-Q-Cogo has no maximum number of points, but zooming and panning sketches with a very large number of points and lines will result in laggy performance on slow computers. To improve performance, turn off point labelling or delete unnecessary points.
+Cogo has no maximum number of points, but zooming and panning sketches with a very large number of points and lines will result in laggy performance on slow computers. To improve performance, turn off point labelling or delete unnecessary points.
 
 <h5>Browsers</h5>
 
-Q-Cogo was designed in <a href="https://www.google.com/chrome/" title="Download Chrome" onclick="return Win('https://www.google.com/chrome/');">Google Chrome</a>. Using Q-Cogo in Chrome is highly recommended for fast, error-free performance. <br><br>
+Cogo was designed in <a href="https://www.google.com/chrome/" title="Download Chrome" onclick="return Win('https://www.google.com/chrome/');">Google Chrome</a>. Using Cogo in Chrome is highly recommended for fast, error-free performance. <br><br>
 
 Internet Explorer versions 11 and below render SVG graphics slowly, resulting in long lags and browser crashes. Using Internet Explorer is possible but NOT recommended. <br><br>
 
-Recent standards-compliant browsers should provide good performance. Because Q-Cogo uses modern web components, update your browser to the latest version. In any browser, refreshing or leaving the page will result in your work being lost. Save your work often. <br><br>
+Recent standards-compliant browsers should provide good performance. Because Cogo uses modern web components, update your browser to the latest version. In any browser, refreshing or leaving the page will result in your work being lost. Save your work often. <br><br>
 
-Q-Cogo has not been tested with older browsers, many mobile devices, or obscure operating systems. <br><br>
+Cogo has not been tested with older browsers, many mobile devices, or obscure operating systems. <br><br>
 
-Please report bugs in detail: NOTANADDRESS.
+Please report bugs in detail: <a href="mailto:admin@africansurveyors.co.zw">admin@africansurveyors.co.zw</a>.
 
 </div></div>
 
@@ -514,7 +502,7 @@ On a touch-enabled device, zoom by pinching the sketch with two fingers. Drag th
 
 Clicking on sketch points from a data entry field will add data to the field in the appropriate format. For example, in a field that accepts a list of points, point names will be separated by commas. In a field that accepts an angle or a distance, a 'Pt1..Pt2' expression will be formed instead. <br><br>
 
-Draw arcs and lines by choosing the appropriate tool, then clicking on the points in the sketch as instructed. Delete lines or arcs by choosing the delete tool, then picking the segments. If the line tool is selected, Q-Cogo will draw lines between points as they are stored. <br><br>
+Draw arcs and lines by choosing the appropriate tool, then clicking on the points in the sketch as instructed. Delete lines or arcs by choosing the delete tool, then picking the segments. If the line tool is selected, Cogo will draw lines between points as they are stored. <br><br>
 
 Toggle point labels (Point Name | Elevation | Description | None) by clicking on the link. 
 
@@ -526,9 +514,9 @@ Toggle point labels (Point Name | Elevation | Description | None) by clicking on
 
 <h4>TIPS AND TRICKS</h4>
 
-Q-Cogo will sort and suggest points more effectively if point names are numeric. On mobile platforms, only numbers can be entered. For best results, don't include letters or symbols unless you absolutely need to. <br><br>
+Cogo will sort and suggest points more effectively if point names are numeric. On mobile platforms, only numbers can be entered. For best results, don't include letters or symbols unless you absolutely need to. <br><br>
 
-If the default text size is too small in your desktop browser, try zooming the page. Q-Cogo is completely scalable, so all components will adjust automatically to fit the screen. <br><br>
+If the default text size is too small in your desktop browser, try zooming the page. Cogo is completely scalable, so all components will adjust automatically to fit the screen. <br><br>
 
 To efficiently save files to your computer, set your browser to prompt for a save location instead of using the default download folder. This will allow you to over-write an existing file if you want to. <br><br>
 
@@ -792,7 +780,7 @@ If you only wish to enter a closing angle (no distance was observed), a dummy po
 
 Compass Rule adjusts points based on the traverse misclosure Angle Balance. (Remember, balancing angles can sometimes make the traverse closure larger.) Coordinates are adjusted based on line length, with longer observations receiving larger adjustments.<br><br>
 
-Balancing a traverse with only a fixed opening/closing azimuth is not yet possible in Q-Cogo. Starting on 2 fixed points at the initial azimuth will approximate this result, but the first observed distance will be held fixed.
+Balancing a traverse with only a fixed opening/closing azimuth is not yet possible in Cogo. Starting on 2 fixed points at the initial azimuth will approximate this result, but the first observed distance will be held fixed.
 
 <h5>Misclosure Calculations</h5>
 
@@ -868,7 +856,7 @@ Angles must be entered in DMS, of the form DDD.MMSSSS... or DDD°MM'SS.SS..." (s
 
 <h5>Example</h5>
 
-In Triangle mode, enter 45°00'00" for A, "23.000" for a, "30.000" for b, and choose "Solve". Leave the other values blank. Notice that this input is ambiguous, so Q-Cogo provides two possible solutions. Leaving A blank and entering 45°00'00" for B produces only 1 solution. <br><br>
+In Triangle mode, enter 45°00'00" for A, "23.000" for a, "30.000" for b, and choose "Solve". Leave the other values blank. Notice that this input is ambiguous, so Cogo provides two possible solutions. Leaving A blank and entering 45°00'00" for B produces only 1 solution. <br><br>
 
 Next, click "Triangle" to toggle to Curve mode. Enter "150.000" for Radius, "126.000" for Length, and choose "Solve". Entering "-23.000" for Tangent and "126.000" for Length will yield a curve with a Delta value larger than 180°. (Note that a positive Tangent in this same case would yield an impossible curve.)
 
@@ -936,7 +924,7 @@ The "Info" toggle controls the level of detail in the traverse report. Choose "Q
 
 To get help on a topic, choose the appropriate link from the list. The help content box will scroll to the topic. Scroll through the help content box to browse all help topics. <br><br>
 
-Each area in Q-Cogo includes pop-up help topics relevant to that area. Click on the nearest "?" icon learn more about using a feature.
+Each area in Cogo includes pop-up help topics relevant to that area. Click on the nearest "?" icon learn more about using a feature.
 
 </div></div>
 
@@ -981,7 +969,7 @@ To control the sketch linework tools: <br><br>
 
 <h4>ABBREVIATIONS</h4>
 
-The following is a complete index of technical abbreviations used in Q-Cogo:<br><br>
+The following is a complete index of technical abbreviations used in Cogo:<br><br>
 
 <span class="par-label">':</span>Feet <br>
 <span class="par-label">+E:</span>Easting Shift <br>
@@ -1035,13 +1023,13 @@ The following is a complete index of technical abbreviations used in Q-Cogo:<br>
 
 <div class="help-index">
 
-<a href="javascript:void(0)" title="About Q-Cogo" onclick="ScrollHelp('AboutTip')">About</a> <br>
-<a href="javascript:void(0)" title="Copyright and terms of Q-Cogo" onclick="ScrollHelp('CopyrightTip')">Copyright, Terms</a> <br>
-<a href="javascript:void(0)" title="Versions of Q-Cogo" onclick="ScrollHelp('VersionTip')">Versions</a> <br>
-<a href="javascript:void(0)" title="How to download Q-Cogo" onclick="ScrollHelp('DownloadTip')">Download</a> <br>
-<a href="javascript:void(0)" title="How to use Q-Cogo" onclick="ScrollHelp('GeneralTip')">Using Q-Cogo</a> <br>
-<a href="javascript:void(0)" title="Optimizing Q-Cogo's performace" onclick="ScrollHelp('PerformanceTip')">Performance</a> <br>
-<a href="javascript:void(0)" title="Optimizing Q-Cogo's performace" onclick="ScrollHelp('SketchTip')">Sketch</a> <br>
+<a href="javascript:void(0)" title="About Cogo" onclick="ScrollHelp('AboutTip')">About</a> <br>
+<a href="javascript:void(0)" title="Copyright and terms of Cogo" onclick="ScrollHelp('CopyrightTip')">Copyright, Terms</a> <br>
+<a href="javascript:void(0)" title="Versions of Cogo" onclick="ScrollHelp('VersionTip')">Versions</a> <br>
+<a href="javascript:void(0)" title="How to download Cogo" onclick="ScrollHelp('DownloadTip')">Download</a> <br>
+<a href="javascript:void(0)" title="How to use Cogo" onclick="ScrollHelp('GeneralTip')">Using Cogo</a> <br>
+<a href="javascript:void(0)" title="Optimizing Cogo's performace" onclick="ScrollHelp('PerformanceTip')">Performance</a> <br>
+<a href="javascript:void(0)" title="Optimizing Cogo's performace" onclick="ScrollHelp('SketchTip')">Sketch</a> <br>
 <a href="javascript:void(0)" title="Helpful tips and tricks" onclick="ScrollHelp('TipsTricksTip')">Tips and Tricks</a> <br>
 
 <hr>
@@ -1059,8 +1047,8 @@ The following is a complete index of technical abbreviations used in Q-Cogo:<br>
 
 <hr>
 
-<a href="javascript:void(0)" title="Q-Cogo shortcut keys" onclick="ScrollHelp('ShortcutTip')">Shortcut Keys</a> <br>
-<a href="javascript:void(0)" title="Abbreviations used in Q-Cogo" onclick="ScrollHelp('Abbreviations')">Abbreviations</a> <br>
+<a href="javascript:void(0)" title="Cogo shortcut keys" onclick="ScrollHelp('ShortcutTip')">Shortcut Keys</a> <br>
+<a href="javascript:void(0)" title="Abbreviations used in Cogo" onclick="ScrollHelp('Abbreviations')">Abbreviations</a> <br>
 
 </div></div></div>
 
@@ -1080,25 +1068,25 @@ The following is a complete index of technical abbreviations used in Q-Cogo:<br>
 
 <div class="highlight"> 
 
-<p class="doc"><span class="b">Your browser is currently not running JavaScript. Q-Cogo uses JavaScript for all land survey calculations: to use Q-Cogo, you MUST enable JavaScript in your browser.</span></p>
+<p class="doc"><span class="b">Your browser is currently not running JavaScript. Cogo uses JavaScript for all land survey calculations: to use Cogo, you MUST enable JavaScript in your browser.</span></p>
 
 </div>
 
 <p class="doc"> <br>
 
-<span class="u b">Why does Q-Cogo use JavaScript?</span> <br>
+<span class="u b">Why does Cogo use JavaScript?</span> <br>
 
-JavaScript is executed on your computer instead of on a web server. This means that your calculations get processed faster and you get your results sooner. It also means that you don't have to be connected to the internet to do land survey calculations in Q-Cogo. <br><br>
+JavaScript is executed on your computer instead of on a web server. This means that your calculations get processed faster and you get your results sooner. It also means that you don't have to be connected to the internet to do land survey calculations in Cogo. <br><br>
 
 <span class="u b">What should I do about this?</span> <br>
 
-Just turn on JavaScript in your browser. The method for doing this varies by browser, but click on your browser's "help" menu to get started. Most internet browsers default to allowing JavaScript unless you make a point of turning it off. <span class="u">IF YOU ARE RUNNING A LOCAL VERSION OF Q-COGO IN MS INTERNET EXPLORER</span> you must first confirm that you wish to allow Q-Cogo run scripts. To do this, click on the yellow error bar at the top of the screen and choose "Allow Blocked Content". <br><br>
+Just turn on JavaScript in your browser. The method for doing this varies by browser, but click on your browser's "help" menu to get started. Most internet browsers default to allowing JavaScript unless you make a point of turning it off. <span class="u">IF YOU ARE RUNNING A LOCAL VERSION OF Q-COGO IN MS INTERNET EXPLORER</span> you must first confirm that you wish to allow Cogo run scripts. To do this, click on the yellow error bar at the top of the screen and choose "Allow Blocked Content". <br><br>
 
 <span class="u b">Is it safe to turn on JavaScript?</span> <br>
 
-Q-Cogo only uses JavaScript to calculate and sketch survey computations and to navigate through calculation areas. Q-Cogo cannot and will not harm your computer. It is possible for websites to exploit bugs in JavaScript to harm your computer. However, these websites are very rare. JavaScript is very safe to turn on, especially in a modern, frequently updated browser. <br><br>
+Cogo only uses JavaScript to calculate and sketch survey computations and to navigate through calculation areas. Cogo cannot and will not harm your computer. It is possible for websites to exploit bugs in JavaScript to harm your computer. However, these websites are very rare. JavaScript is very safe to turn on, especially in a modern, frequently updated browser. <br><br>
 
-If you have questions or concerns about JavaScript or Q-Cogo, please contact us: <span class="u b">info[ ]q-cogo[ ]com</span>. (Replace the first '[ ]' with '@' and the second '[ ]' with '.') </p>
+If you have questions or concerns about JavaScript or Cogo, please contact us: <span class="u b">info[ ]q-cogo[ ]com</span>. (Replace the first '[ ]' with '@' and the second '[ ]' with '.') </p>
 
 
 </div></div>
