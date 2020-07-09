@@ -116,6 +116,12 @@ s0.parentNode.insertBefore(s1,s0);
           </div>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="note-pad.php">
+          <i class="fas fa-fw fa-book"></i>
+          <span>Note Pad / Jotter</span></a>
+      </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider">
