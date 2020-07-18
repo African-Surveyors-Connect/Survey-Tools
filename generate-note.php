@@ -11,10 +11,10 @@
 
 $filename = "files/".$_POST['topic'].".docx"; 
 
-$fh = fopen($filename, 'w') or die("Failed to create file");
+$fh = fopen($filename, 'w') or die("<div class='alert alert-danger' role='alert'>Failed to create file</div>");
 $text = $_POST['notes'];
 fwrite($fh, $text) or die("<div class='alert alert-danger' role='alert'>
-Notes could not be generated. Please <a href='note-pad.php'>try again</a>
+Notes could not be generated. Please <a href='note-pad.php'>try again.</a><br>Make sure your note is: <br>-->Labeled<br>-->and has some content in it
 </div>");
 fclose($fh);
 echo "
