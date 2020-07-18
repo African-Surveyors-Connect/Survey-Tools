@@ -1,0 +1,46 @@
+---
+deployment:
+  tasks:
+  - export DEPLOYPATH=/home/user/public_html/apps.africansurveyors.net/
+  - /bin/cp angle-conversion.php $DEPLOYPATH
+  - /bin/cp angles.php $DEPLOYPATH
+  - /bin/cp area-conversion.php $DEPLOYPATH
+  - /bin/cp basic-calculator.php $DEPLOYPATH
+  - /bin/cp $DEPLOYPATH
+  - /bin/cp combined-distance-reductions.php $DEPLOYPATH
+  - /bin/cp conversions.php $DEPLOYPATH
+  - /bin/cp coordinate-conversion.php $DEPLOYPATH
+  - /bin/cp dev-feedback.php $DEPLOYPATH
+  - /bin/cp dictionary.php $DEPLOYPATH
+  - /bin/cp distance.php $DEPLOYPATH
+  - /bin/cp generate-note.php $DEPLOYPATH
+  - /bin/cp get-area-coordinates.php $DEPLOYPATH
+  - /bin/cp index.php $DEPLOYPATH
+  - /bin/cp insert.php $DEPLOYPATH
+  - /bin/cp intersection.php $DEPLOYPATH
+  - /bin/cp join.php $DEPLOYPATH
+  - /bin/cp length-conversion.php $DEPLOYPATH
+  - /bin/cp mean-sea-level.php $DEPLOYPATH
+  - /bin/cp note-pad.php $DEPLOYPATH
+  - /bin/cp other.php $DEPLOYPATH
+  - /bin/cp polar.php $DEPLOYPATH
+  - /bin/cp resection.php $DEPLOYPATH
+  - /bin/cp sag.php $DEPLOYPATH
+  - /bin/cp slope.php $DEPLOYPATH
+  - /bin/cp standardisation.php $DEPLOYPATH
+  - /bin/cp temperature.php $DEPLOYPATH
+  - /bin/cp tension-pull.php $DEPLOYPATH
+  - /bin/cp traverse.php $DEPLOYPATH
+  - /bin/cp volume-conversion.php $DEPLOYPATH
+  
+  #adding directories now
+
+  - /bin/cp -R config $DEPLOYPATH
+  - /bin/cp -R css $DEPLOYPATH
+  - /bin/cp -R files $DEPLOYPATH
+  - /bin/cp -R img $DEPLOYPATH
+  - /bin/cp -R includes $DEPLOYPATH
+  - /bin/cp -R js $DEPLOYPATH
+  - /bin/cp -R q-cogo $DEPLOYPATH
+  - /bin/cp -R scss $DEPLOYPATH
+  - /bin/cp -R vendor $DEPLOYPATH
