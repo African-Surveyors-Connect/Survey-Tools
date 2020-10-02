@@ -48,6 +48,197 @@ s0.parentNode.insertBefore(s1,s0);
 <!-- Google AdSense Code -->
 <script data-ad-client="ca-pub-1726892928324403" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
+<!-- ESRI API start -->
+<link rel="stylesheet" href="https://js.arcgis.com/4.16/esri/themes/light/main.css" />
+
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <script src="https://js.arcgis.com/4.16/"></script>
+
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/SceneView",
+            "esri/widgets/CoordinateConversion",
+            "esri/widgets/CoordinateConversion/support/Format",
+            "esri/widgets/CoordinateConversion/support/Conversion",
+            "esri/geometry/Point",
+            "esri/geometry/support/webMercatorUtils",
+            "esri/geometry/SpatialReference"
+        ], function(
+            Map,
+            SceneView,
+            CoordinateConversion,
+            Format,
+            Conversion,
+            Point,
+            webMercatorUtils,
+            SpatialReference
+        ) {
+            var map = new Map({
+                basemap: "hybrid",
+                ground: "world-elevation"
+            });
+
+            var view = new SceneView({
+                container: "viewDiv",
+                map: map,
+                // Clip the view to the extent covered by
+                // by NAD 1983 HARN StatePlane California I
+                clippingArea: {
+                    xmin: -124.45,
+                    xmax: -119.99,
+                    ymax: 43.01,
+                    ymin: 39.59
+                },
+                center: {
+                    x: -122.22,
+                    y: 41.3
+                },
+                zoom: 10,
+                viewingMode: "local"
+            });
+
+            view.when(function(view) {
+                view.goTo({
+                    tilt: 45
+                }).catch(function(error) {
+                    if (error.name != "AbortError") {
+                        console.error(error);
+                    }
+                });
+            });
+
+            var ccWidget = new CoordinateConversion({
+                view: view
+            });
+
+            view.ui.add(ccWidget, "top-right");
+
+            // Regular expression to find a number
+            var numberSearchPattern = /-?\d+[\.]?\d*/;
+
+            /**
+             * Create a new Format called XYZ, which looks like: "<Latitude>, <Longitude>, <Z>"
+             *
+             * We need to define a convert function, a reverse convert function,
+             * and some formatting information.
+             */
+            var newFormat = new Format({
+                // The format's name should be unique with respect to other formats used by the widget
+                name: "XYZ",
+                conversionInfo: {
+                    // Define a convert function
+                    // Point -> Position
+                    convert: function(point) {
+                        var returnPoint = point.spatialReference.isWGS84 ?
+                            point :
+                            webMercatorUtils.webMercatorToGeographic(point);
+                        var x = returnPoint.x.toFixed(4);
+                        var y = returnPoint.y.toFixed(4);
+                        var z = returnPoint.z.toFixed(4);
+                        return {
+                            location: returnPoint,
+                            coordinate: `${x}, ${y}, ${z}`
+                        };
+                    },
+                    // Define a reverse convert function
+                    // String -> Point
+                    reverseConvert: function(string) {
+                        var parts = string.split(",");
+                        return new Point({
+                            x: parseFloat(parts[0]),
+                            y: parseFloat(parts[1]),
+                            z: parseFloat(parts[2]),
+                            spatialReference: {
+                                wkid: 4326
+                            }
+                        });
+                    }
+                },
+                // Define each segment of the coordinate
+                coordinateSegments: [{
+                    alias: "X",
+                    description: "Longitude",
+                    searchPattern: numberSearchPattern
+                }, {
+                    alias: "Y",
+                    description: "Latitude",
+                    searchPattern: numberSearchPattern
+                }, {
+                    alias: "Z",
+                    description: "Elevation",
+                    searchPattern: numberSearchPattern
+                }],
+                defaultPattern: "X°, Y°, Z"
+            });
+
+            // add our new format to the widget's dropdown
+            ccWidget.formats.add(newFormat);
+
+            /**
+             * Create a new Format 'SPS I', which looks like: "<X>, <Y>" in the
+             * California StatePlane Zone I Spatial Reference, described by wkid 102241
+             *
+             * For this Format, we only need to provide a spatialReference with the correct
+             * wkid. The geometry service can take care of the rest.
+             */
+            var stateplaneCA = new Format({
+                name: "SPS I",
+                conversionInfo: {
+                    spatialReference: new SpatialReference({
+                        wkid: 102241
+                    }),
+                    reverseConvert: function(string, format) {
+                        var parts = string.split(",");
+                        return new Point({
+                            x: parseFloat(parts[0]),
+                            y: parseFloat(parts[1]),
+                            spatialReference: {
+                                wkid: 102241
+                            }
+                        });
+                    }
+                },
+                coordinateSegments: [{
+                    alias: "X",
+                    description: "easting",
+                    searchPattern: numberSearchPattern
+                }, {
+                    alias: "Y",
+                    description: "northing",
+                    searchPattern: numberSearchPattern
+                }],
+                defaultPattern: "X, Y"
+            });
+
+            // Add our new format to the widget's dropdown
+            ccWidget.formats.add(stateplaneCA);
+
+            // Add the two custom formats to the top of the widget's display
+            ccWidget.conversions.splice(
+                0,
+                0,
+                new Conversion({
+                    format: newFormat
+                }),
+                new Conversion({
+                    format: stateplaneCA
+                })
+            );
+        });
+    </script>
+    <!-- ESRI API end -->
 </head>
 
 <body id="page-top">
@@ -140,8 +331,8 @@ s0.parentNode.insertBefore(s1,s0);
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Location Based</h6>
-            <a class="collapse-item" href="get-area-coordinates.php">Get Area Coordinates</a><!--
-            <a class="collapse-item" href="login.html">Login</a>
+            <a class="collapse-item" href="get-area-coordinates.php">Get Area Coordinates</a>
+            <a class="collapse-item" href="coord-trans.php">Coordinate Converter</a><!--
             <a class="collapse-item" href="register.html">Register</a>
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a>-->
             <div class="collapse-divider"></div>
